@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid  pb-4 mb-4  " style="background: red;" >
+    <div class="container-fluid  pb-4 mb-4  " >
 
         
         <div class="row">
@@ -70,8 +70,6 @@
             </div>
 
             <div class="col-12 col-lg-9 col-xl-10">
-              
-
                         <div class="card h-100  custom-space" style="border: none;">
                             <div class="card-body">
 

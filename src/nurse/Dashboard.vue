@@ -1,11 +1,11 @@
 <template>
-    <div class="container-fluid  pb-4 ">
-        
-        <div class="row top-space ">
+    <div class="container-fluid pb-4  ">
+
+        <div class="row">
             <div class=" col-12 col-lg-9 ">
-                <div class="h-100 mt-4">
+
                 <!-- Welcome and Search Section -->
-                <div class="d-flex justify-content-between align-items-center mb-4 ">
+                <div class="d-flex justify-content-between align-items-center mb-4  custom-space ">
                     <h2 class="fs-3 fw-bold">Welcome, Nurse Johnson!</h2>
                     <div class="search-bar">
                         <input type="text" class="form-control" placeholder="Search" aria-label="Search" />
@@ -13,48 +13,60 @@
                 </div>
 
                 <!-- Top Statistics Section -->
-                <div class="row g-2 ">
+                <div class="row g-2">
                     <div class="col-md-4">
-                        <div class="custom-card">
-                            <div>
-                                <p class="custom-text">
-                                    <i class="bi bi-heart-pulse custom-icon"></i> Vital Signs
-                                </p>
-                                <p class="custom-subtext me-2">Due Now</p>
+                        <div class="card ">
+                            <div class="card-body d-flex align-item-center justify-content-between">
+                                <div class="div">
+                                    <p class="fw-bold mb-0 pb-0">
+                                        <i class="bi bi-activity"></i> Vital Signs
+                                    </p>
+                                    <small class=" text-muted me-2 mt-0 pt-0">Due Now</small>
+                                </div>
+
+                                <div class="custom-number">08</div>
+
+
                             </div>
-                            <div class="custom-number">08</div>
                         </div>
                         <!-- Card 2 -->
-                        <div class="custom-card">
-                            <div>
-                                <p class="custom-text">
-                                    <i class="bi bi-journal-text custom-icon"></i> Care Plans
-                                </p>
-                                <p class="custom-subtext">Pending</p>
+                        <div class="card mt-2">
+                            <div class="card-body d-flex align-item-center justify-content-between">
+                                <div class="div">
+                                    <p class="fw-bold mb-0 pb-0">
+                                        <i class="bi bi-journal-medical"></i> Care Plans
+                                    </p>
+                                    <small class=" text-muted mt-0 pt-0">Pending</small>
+                                </div>
+                                <div class="custom-number">05</div>
                             </div>
-                            <div class="custom-number">05</div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="custom-card">
-                            <div>
-                                <p class="custom-text">
-                                    <i class="bi bi-heart-pulse icon"></i> Samples
-                                </p>
-                                <p class="custom-card-subtitle">Active</p>
+                        <div class="card ">
+                            <div class="card-body d-flex align-item-center justify-content-between">
+                                <div class="div">
+                                    <p class="fw-bold mb-0 pb-0">
+                                        <i class="bi bi-droplet"></i> Samples
+                                    </p>
+                                    <small class="text-muted mt-0 pt-0">Active</small>
+                                </div>
+                                <div class="custom-number">03</div>
                             </div>
-                            <div class="custom-number">03</div>
                         </div>
-                        <!-- Card 2 -->
-                        <div class="custom-card">
-                            <div>
-                                <p class="custom-text">
-                                    <i class="bi bi-apple icon"></i> Diet Plans
-                                </p>
-                                <p class="custom-subtext">Monitor</p>
+
+                        <div class="card mt-2 ">
+                            <div class="card-body d-flex align-item-center justify-content-between">
+                                <div class="div">
+                                    <p class="fw-bold mb-0 pb-0">
+                                        <i class="bi bi-clipboard-data"></i> Diet Plans
+                                    </p>
+                                    <small class="text-muted mt-0 pt-0">Monitor</small>
+                                </div>
+                                <div class="custom-number">02</div>
                             </div>
-                            <div class="custom-number">02</div>
                         </div>
+
                     </div>
                     <!-- Modal -->
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -83,7 +95,8 @@
                                                     class="rounded-circle me-3" width="40" height="40" />
                                                 <div>
                                                     <p class="mb-0"><strong>{{ patient.name }}</strong></p>
-                                                    <small>ID: {{ patient.id }} - {{ patient.department }}</small>
+                                                    <small>ID: {{ patient.id }} - {{ patient.department
+                                                        }}</small>
                                                 </div>
                                             </div>
                                             <span class="badge success-bg" style="height: 25px; line-height: 20px;">
@@ -102,26 +115,25 @@
                     </div>
                     <div class="col-md-4">
 
-                        <div class="card p-3 text-center">
+                        <div class="card text-center h-100 p-3">
 
-                            <div class="d-flex align-item-center justify-content-center ">
-                                <p class="custom-text mt-2"> <i class="bi bi-clock"></i> Working Progress</p>
-                            </div>
-                            <div class="card-body text-center">
+                            <div class="card-body  ">
 
-                                <div class="custom-number">22</div>
-                                <p>Active Patient Cases</p>
+                                <p class="fw-bold "> <i class="bi bi-clock"></i> Working Progress</p>
+                                <p class="custom-number mb-0 pb-0">22</p>
+                                <small class="text-muted mt-0 pt-0">Active Patient Cases</small>
+
                             </div>
                         </div>
                     </div>
 
                 </div>
                 <!-- Main Content Section -->
-                <div class="row g-2">
+                <div class="row  mt-2">
                     <!-- Upcoming Appointments -->
                     <div class="col-md-6">
                         <div class="card p-4 h-100">
-                            <h6 class="card-heading mb-2">Upcoming Appointments</h6>
+                            <p class="fs-4 fw-bold mb-2">Upcoming Appointments</p>
 
                             <div class="row  overflow-auto custom-scrollbar px-3 ">
 
@@ -130,19 +142,18 @@
                                     style="background: #F8F8F8; border-radius: 8px;">
                                     <div class="d-flex align-items-center justify-content-between mb-0 pb-0 mt-2">
                                         <div class="div">
-                                            <p class="mb-0"><strong>{{ appointment.name }}</strong></p>
-                                            <p class="mb-0"><strong class="md-paragraph">{{ appointment.type
-                                                    }}</strong>
+                                            <p class="mb-0 fw-bold">{{ appointment.name }}</p>
+                                            <p class="mb-0 fs-6">{{ appointment.type
+                                                }}
                                             </p>
                                         </div>
                                         <div class="div">
-                                            <p class="mb-0 pb-0 md-paragraph">{{ appointment.time }}</p>
-                                            <a href="#" class="pt-0 md-paragraph">View more details</a>
+                                            <p class="mb-0 pb-0 fs-6">{{ appointment.time }}</p>
+                                            <small><a href="#" class="pt-0 ">View more details</a></small>
+
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
 
                         </div>
@@ -151,14 +162,14 @@
 
                     <div class="col-md-6">
                         <div class="card p-3 h-100">
-                            <h6 class="card-heading mb-3">Recent Patients</h6>
+                            <p class="fs-4 fw-bold mb-3">Recent Patients</p>
                             <div class="row overflow-auto custom-scrollbar px-3">
                                 <div v-for="patient in recentPatients" :key="patient.id" class="p-2 mt-2"
                                     style="background: #F8F8F8; border-radius: 8px;">
                                     <div class="d-flex align-items-center justify-content-between mb-0 pb-0">
                                         <div class="div">
-                                            <p class="mb-0"><strong>{{ patient.name }}</strong></p>
-                                            <p class="mb-0"><strong class="md-paragraph">Room: {{ patient.room
+                                            <p class="mb-0 fw-bold">{{ patient.name }}</p>
+                                            <p class="mb-0 fs-6"><strong class="md-paragraph">Room: {{ patient.room
                                                     }}</strong></p>
                                         </div>
                                         <div class="div text-center">
@@ -181,40 +192,54 @@
 
                 </div>
             </div>
-            </div>
+
+
+
+
             <div class="col-12 col-lg-3">
-                <div class="card h-100 p-4 mt-4">
-                    <!-- Date and Time -->
-                    <div class="d-flex align-item-center justify-content-between">
-                        <div>
-                            <i class="bi bi-calendar"></i> Dec 14, 2024
-                        </div>
-                        <div>
-                            <i class="bi bi-clock"></i> Until 5:00 PM
-                        </div>
-                    </div>
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <div class="custom-space">
 
-                    <!-- Quick Links -->
-                    <p class="custom-text mt-3 mb-3">Quick Links</p>
-                    <p class="g-4 md-paragraph">
-                        <i class="bi bi-calendar-check"></i> Appointments
-                    </p>
-                    <p class="g-4 md-paragraph">
-                        <i class="bi bi-people"></i>  Patients
-                    </p>
-                    <p class="g-4 md-paragraph">
-                        <i class="bi bi-file-earmark-text"></i> Reports
-                    </p>
+                            <div class="card  p-4  h-100 ">
+                            <!-- Date and Time -->
+                            <div class="d-flex align-item-center justify-content-between">
+                                <small class="text-muted">
+                                    <i class="bi bi-calendar me-1"></i> Dec 14, 2024
+                                </small>
+                                <small class="text-muted">
+                                    <i class="bi bi-clock me-1"></i> Until 5:00 PM
+                                </small>
+                            </div>
 
-                    <!-- Notifications -->
-                    <p class="custom-text mt-3 mb-3">Notifications</p>
-                    <div class=" notification-red">
-                        Reports
-                    </div>
-                    <div class=" notification-yellow mt-2">
-                        Reports
+                            <!-- Quick Links -->
+                            <p class="fw-bold mt-4">Quick Links</p>
+                            <p class="g-4 fs-6">
+                                <i class="bi bi-calendar-check me-1"></i> Appointments
+                            </p>
+                            <p class="g-4 fs-6">
+                                <i class="bi bi-people me-1"></i> Patients
+                            </p>
+                            <p class="g-4 fs-6">
+                                <i class="bi bi-file-earmark-text me-1"></i> Reports
+                            </p>
+
+                            <!-- Notifications -->
+                            <p class="custom-text mt-3 mb-3 fw-bold">Notifications</p>
+                            <div class=" notification-red">
+                                Reports
+                            </div>
+                            <div class=" notification-yellow mt-2">
+                                Reports
+                            </div>
+                        </div>
+                        </div>
+                        
                     </div>
                 </div>
+
+
+
             </div>
 
         </div>
@@ -226,7 +251,7 @@
 
 export default {
     name: "NurseDashboard",
-   
+
     data() {
         return {
             searchQuery: "",
@@ -603,33 +628,33 @@ export default {
         },
 
         goToPatientDetails(id) {
-  // Manually hide the modal
-  const modalElement = document.getElementById('staticBackdrop');
-  if (modalElement) {
-    modalElement.classList.remove('show');
-    modalElement.setAttribute('aria-hidden', 'true');
-    modalElement.style.display = 'none';
-  }
+            // Manually hide the modal
+            const modalElement = document.getElementById('staticBackdrop');
+            if (modalElement) {
+                modalElement.classList.remove('show');
+                modalElement.setAttribute('aria-hidden', 'true');
+                modalElement.style.display = 'none';
+            }
 
-  // Remove the backdrop manually
-  const backdrops = document.querySelectorAll('.modal-backdrop');
-  backdrops.forEach((backdrop) => backdrop.remove());
+            // Remove the backdrop manually
+            const backdrops = document.querySelectorAll('.modal-backdrop');
+            backdrops.forEach((backdrop) => backdrop.remove());
 
-  // Remove the 'modal-open' class and restore body scrolling
-  const body = document.body;
-  body.classList.remove('modal-open');
-  body.style.overflow = '';
-  body.style.paddingRight = '';
+            // Remove the 'modal-open' class and restore body scrolling
+            const body = document.body;
+            body.classList.remove('modal-open');
+            body.style.overflow = '';
+            body.style.paddingRight = '';
 
-  // Navigate to the next page
-  this.$router
-    .push({ name: 'PatientDetails', params: { id } })
-    .catch((err) => {
-      if (err.name !== 'NavigationDuplicated') {
-        console.error(err);
-      }
-    });
-}
+            // Navigate to the next page
+            this.$router
+                .push({ name: 'PatientDetails', params: { id } })
+                .catch((err) => {
+                    if (err.name !== 'NavigationDuplicated') {
+                        console.error(err);
+                    }
+                });
+        }
 
     },
 };
@@ -664,7 +689,7 @@ export default {
 }
 
 .card {
-   border: 1px solid #EBEBEB;
+    border: none;
 }
 
 .appointment-item,
@@ -740,33 +765,10 @@ export default {
 
 
 /*   Nursing design css */
-.custom-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    border: 1px solid #e9ecef;
-    border-radius: 8px;
-    background: #fff;
-    margin-bottom: 10px;
-}
 
-.custom-icon {
-    font-size: 24px;
-    color: #000;
-}
 
-.custom-text {
-    margin: 0;
-    font-weight: bold;
-    color: #000;
-}
 
-.custom-subtext {
-    margin: 0;
-    font-size: 14px;
-    color: #6c757d;
-}
+
 
 .custom-number {
     font-size: 36px;
@@ -774,7 +776,7 @@ export default {
     color: #00a0da;
 }
 
-.notification-yellow{
+.notification-yellow {
     color: #C3B41B;
     border-radius: 5px;
     background: #FEFCE8;
@@ -782,18 +784,16 @@ export default {
 
 
 }
-.notification-red{
+
+.notification-red {
 
     color: #FF2626;
     background: #FEF2F2;
-border-radius: 5px;
-padding: 10px;
-}
-.custom-scrollbar{
-    max-height: 290px;
+    border-radius: 5px;
+    padding: 10px;
 }
 
-
-
-
+.custom-scrollbar {
+    max-height: 330px;
+}
 </style>

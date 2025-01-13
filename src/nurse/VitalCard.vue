@@ -73,4 +73,7 @@ export default {
     color: white;
    
 }
+.card{
+    border: none;
+}
 </style>

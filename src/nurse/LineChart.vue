@@ -143,4 +143,7 @@ export default {
   height: 200px;
   width: 100%;
 }
+.card{
+    border: none;
+}
 </style>

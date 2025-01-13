@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid  pb-4 " style="background: red;">
+    <div class="container-fluid  pb-4 " >
        
         <div class="row   ">
             <div class=" col-12 col-lg-9 ">
@@ -95,12 +95,12 @@
                     </div>
                 </div>
                 <!-- Main Content Section -->
-                <div class="row g-2 mt-2">
-                    <!-- Upcoming Appointments -->
-                    <div class="col-md-6">
-                        <div class="card p-4 h-100">
-                            <h6 class="card-heading mb-3">Upcoming Appointments</h6>
-                           
+                <div class="row  mt-2">
+                        <!-- Upcoming Appointments -->
+                        <div class="col-md-6">
+                            <div class="card p-4 h-100">
+                                <p class="fs-4 fw-bold mb-2">Upcoming Appointments</p>
+
                                 <div class="row  overflow-auto custom-scrollbar px-3 ">
 
 
@@ -108,60 +108,59 @@
                                         style="background: #F8F8F8; border-radius: 8px;">
                                         <div class="d-flex align-items-center justify-content-between mb-0 pb-0 mt-2">
                                             <div class="div">
-                                                <p class="mb-0"><strong>{{ appointment.name }}</strong></p>
-                                                <p class="mb-0"><strong class="md-paragraph">{{ appointment.type
-                                                        }}</strong>
+                                                <p class="mb-0 fw-bold">{{ appointment.name }}</p>
+                                                <p class="mb-0 fs-6">{{ appointment.type
+                                                        }}
                                                 </p>
                                             </div>
                                             <div class="div">
-                                                <p class="mb-0 pb-0 md-paragraph">{{ appointment.time }}</p>
-                                                <a href="#" class="pt-0 md-paragraph">View more details</a>
+                                                <p class="mb-0 pb-0 fs-6">{{ appointment.time }}</p>
+                                                <small><a href="#" class="pt-0 ">View more details</a></small>
+                                                
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
-                            
-                        </div>
-                    </div>
-                    <!-- Recent Patients -->
 
-                    <div class="col-md-6">
-                        <div class="card p-4 h-100">
-                            <h6 class="card-heading mb-3">Recent Patients</h6>
-                            <div class="row overflow-auto custom-scrollbar px-3">
-                                <div v-for="patient in recentPatients" :key="patient.id" class="p-2 mt-2"
-                                    style="background: #F8F8F8; border-radius: 8px;">
-                                    <div class="d-flex align-items-center justify-content-between mb-0 pb-0">
-                                        <div class="div">
-                                            <p class="mb-0"><strong>{{ patient.name }}</strong></p>
-                                            <p class="mb-0"><strong class="md-paragraph">Room: {{ patient.room
-                                                    }}</strong></p>
-                                        </div>
-                                        <div class="div text-center">
-                                            <span :class="[
-                                                'badge mt-3',
-                                                {
-                                                    'success-bg': patient.status === 'Admitted',
-                                                    'emergency-bg': patient.status === 'Emergency',
-                                                    'out-bg': patient.status === 'Outpatient',
-                                                },
-                                            ]">
-                                                {{ patient.status }}
-                                            </span>
+                            </div>
+                        </div>
+                        <!-- Recent Patients -->
+
+                        <div class="col-md-6">
+                            <div class="card p-3 h-100">
+                                <p class="fs-4 fw-bold mb-3">Recent Patients</p>
+                                <div class="row overflow-auto custom-scrollbar px-3">
+                                    <div v-for="patient in recentPatients" :key="patient.id" class="p-2 mt-2"
+                                        style="background: #F8F8F8; border-radius: 8px;">
+                                        <div class="d-flex align-items-center justify-content-between mb-0 pb-0">
+                                            <div class="div">
+                                                <p class="mb-0 fw-bold">{{ patient.name }}</p>
+                                                <p class="mb-0 fs-6"><strong class="md-paragraph">Room: {{ patient.room
+                                                        }}</strong></p>
+                                            </div>
+                                            <div class="div text-center">
+                                                <span :class="[
+                                                    'badge mt-3',
+                                                    {
+                                                        'success-bg': patient.status === 'Admitted',
+                                                        'emergency-bg': patient.status === 'Emergency',
+                                                        'out-bg': patient.status === 'Outpatient',
+                                                    },
+                                                ]">
+                                                    {{ patient.status }}
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
+                    </div>
 
             </div>
             <div class="col-12 col-lg-3">
-                <div class="row g-2 ">
+                <div class="row g-2">
                     <!-- Card 1 -->
                     <div class="col-6 col-lg-12">
                         <div class="card p-4  custom-space" >

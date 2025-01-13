@@ -294,4 +294,8 @@ ul {
     border: none !important;
 }
 
+.card{
+    border: none;
+}
+
 </style>

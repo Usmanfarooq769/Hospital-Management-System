@@ -337,4 +337,7 @@ textarea.form-control {
 
     font-size: 10px;
 }
+.card{
+    border: none;
+}
 </style>

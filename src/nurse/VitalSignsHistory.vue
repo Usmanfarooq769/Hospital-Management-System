@@ -69,4 +69,8 @@ td {
     text-align: center;
     vertical-align: middle;
 }
+.card{
+    border: none;
+}
+
 </style>

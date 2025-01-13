@@ -364,9 +364,11 @@ export default {
 
 .card-title i {
   margin-right: 8px;
-  /* Add spacing between the icon and text */
+
 }
 
-
+.card{
+    border: none;
+}
 
 </style>

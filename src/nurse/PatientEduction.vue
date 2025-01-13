@@ -298,4 +298,8 @@ export default {
 .card-text-color {
     color: #1E5EB2;
 }
+
+.card{
+    border: none;
+}
 </style>

@@ -147,4 +147,6 @@ export default {
 .bold-icon{
     font-weight: bold !important;
 }
+
+
 </style>

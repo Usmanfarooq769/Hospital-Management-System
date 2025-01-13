@@ -45,5 +45,9 @@
   .summary-item:last-child {
     border-bottom: none;
   }
+
+  .card{
+    border: none;
+}
   </style>
   

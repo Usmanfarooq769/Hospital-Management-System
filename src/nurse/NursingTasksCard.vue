@@ -148,6 +148,11 @@ color: #FF2626;
 }
 
 
+.card{
+    border: none;
+}
+
+
 
 </style>
   

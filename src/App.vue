@@ -374,6 +374,9 @@ line-height: 43.57px;
 }
  
 }
+.card{
+  border: none;
+}
 
 
 

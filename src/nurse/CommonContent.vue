@@ -1,7 +1,7 @@
 <template>
-    <div>
+   
 
-        <div class="row">
+       
             <div class="col-12">
 
                 <!-- Card -->
@@ -99,6 +99,22 @@
 
                 <div class="row">
 
+
+                    <!-- Buttons -->
+                    <div class="col-md-6 col-xl-12  ">
+                        <div class="card h-100" style="border: none; border-radius: none; background: transparent;">
+
+                            <button class="btn  w-100 mt-2">Recommended
+                                Procedures</button>
+                            <button class="btn  w-100 mt-2">Medications</button>
+                            <button class="btn  w-100 mt-2">Allergies</button>
+                            <button class="btn  w-100 mt-2">Family History</button>
+                            <button class="btn  w-100 mt-2">Personal History</button>
+
+                        </div>
+
+                    </div>
+
                     <!-- Working Progress Summary -->
                     <div class=" col-md-6 col-xl-12">
                         <div class="mt-2 card p-3 h-100  shadow-sm" style="border: 1px solid #EBEBEB;">
@@ -125,8 +141,8 @@
                 </div>
 
             </div>
-        </div>
-    </div>
+      
+  
 
 
 
@@ -159,10 +175,7 @@ export default {
 
 
 <style scoped>
-.health-metrics-card {
-    background: #F8F8F8;
-    border-radius: 8px;
-}
+
 
 .btn {
     border: 1px solid #00A0DA;

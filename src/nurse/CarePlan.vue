@@ -138,6 +138,9 @@ export default {
 </script>
 
 <style scoped>
+.card{
+  border: none;
+}
 .activ-badge {
   background: #73f85142;
   color: #297711 !important;
@@ -164,5 +167,7 @@ export default {
 .active-card {
   border: 1px solid #00A0DA;
 }
+
+
 
 </style>
