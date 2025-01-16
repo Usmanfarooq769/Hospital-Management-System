@@ -226,6 +226,21 @@ export default {
     max-width: 182px;
 }
 
+.btn-next-vital:hover {
+    background: #FF7F7F;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    max-width: 182px;
+}
+
+.btn-next-medication:hover {
+    background: #F3E8FF;
+    color: #BA81E2;
+    border: none;
+    border-radius: 10px;
+    max-width: 182px;
+}
 .activ-badge {
     background: #73f85142;
     color: #297711 !important;

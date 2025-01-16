@@ -30,7 +30,7 @@
                             </div>
                         </div>
                         <!-- Card 2 -->
-                        <div class="card mt-2">
+                        <div class="card mt-2" >
                             <div class="card-body d-flex align-item-center justify-content-between">
                                 <div class="div">
                                     <p class="fw-bold mb-0 pb-0">
@@ -74,9 +74,9 @@
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5 sub-heading" id="staticBackdropLabel">
+                                    <h5 class="modal-title fs-4 fw-bold" id="staticBackdropLabel">
                                         Patients
-                                    </h1>
+                                    </h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -115,12 +115,12 @@
                     </div>
                     <div class="col-md-4">
 
-                        <div class="card text-center h-100 p-3">
+                        <div class="card text-center h-100 p-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 
                             <div class="card-body  ">
 
                                 <p class="fw-bold "> <i class="bi bi-clock"></i> Working Progress</p>
-                                <p class="custom-number mb-0 pb-0">22</p>
+                                <p class="custom-number mb-0 pb-0">08</p>
                                 <small class="text-muted mt-0 pt-0">Active Patient Cases</small>
 
                             </div>
@@ -143,9 +143,9 @@
                                     <div class="d-flex align-items-center justify-content-between mb-0 pb-0 mt-2">
                                         <div class="div">
                                             <p class="mb-0 fw-bold">{{ appointment.name }}</p>
-                                            <p class="mb-0 fs-6">{{ appointment.type
+                                            <small class="mb-0 text-muted">{{ appointment.type
                                                 }}
-                                            </p>
+                                            </small>
                                         </div>
                                         <div class="div">
                                             <p class="mb-0 pb-0 fs-6">{{ appointment.time }}</p>
@@ -169,8 +169,8 @@
                                     <div class="d-flex align-items-center justify-content-between mb-0 pb-0">
                                         <div class="div">
                                             <p class="mb-0 fw-bold">{{ patient.name }}</p>
-                                            <p class="mb-0 fs-6"><strong class="md-paragraph">Room: {{ patient.room
-                                                    }}</strong></p>
+                                            <small class="mb-0 text-muted"><strong class="md-paragraph">Room: {{ patient.room
+                                                    }}</strong></small>
                                         </div>
                                         <div class="div text-center">
                                             <span :class="[
@@ -193,48 +193,53 @@
                 </div>
             </div>
 
-
-
-
             <div class="col-12 col-lg-3">
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="custom-space">
 
                             <div class="card  p-4  h-100 ">
-                            <!-- Date and Time -->
-                            <div class="d-flex align-item-center justify-content-between">
-                                <small class="text-muted">
-                                    <i class="bi bi-calendar me-1"></i> Dec 14, 2024
-                                </small>
-                                <small class="text-muted">
-                                    <i class="bi bi-clock me-1"></i> Until 5:00 PM
-                                </small>
-                            </div>
+                                <div class="row">
 
-                            <!-- Quick Links -->
-                            <p class="fw-bold mt-4">Quick Links</p>
-                            <p class="g-4 fs-6">
-                                <i class="bi bi-calendar-check me-1"></i> Appointments
-                            </p>
-                            <p class="g-4 fs-6">
-                                <i class="bi bi-people me-1"></i> Patients
-                            </p>
-                            <p class="g-4 fs-6">
-                                <i class="bi bi-file-earmark-text me-1"></i> Reports
-                            </p>
+                                    <div class="col-md-6 col-xl-12">
+                                        <!-- Date and Time -->
+                                        <div class="d-flex align-item-center justify-content-between">
+                                            <small class="text-muted">
+                                                <i class="bi bi-calendar me-1"></i> Dec 14, 2024
+                                            </small>
+                                            <small class="text-muted">
+                                                <i class="bi bi-clock me-1"></i> Until 5:00 PM
+                                            </small>
+                                        </div>
 
-                            <!-- Notifications -->
-                            <p class="custom-text mt-3 mb-3 fw-bold">Notifications</p>
-                            <div class=" notification-red">
-                                Reports
-                            </div>
-                            <div class=" notification-yellow mt-2">
-                                Reports
+                                        <!-- Quick Links -->
+                                        <p class="fw-bold mt-4">Quick Links</p>
+                                        <p class="g-4 fs-6">
+                                            <i class="bi bi-calendar-check me-1"></i> Appointments
+                                        </p>
+                                        <p class="g-4 fs-6">
+                                            <i class="bi bi-people me-1"></i> Patients
+                                        </p>
+                                        <p class="g-4 fs-6">
+                                            <i class="bi bi-file-earmark-text me-1"></i> Reports
+                                        </p>
+                                    </div>
+
+                                    <div class="col-md-6 col-xl-12">
+                                        <!-- Notifications -->
+                                        <p class="custom-text mb-3  mt-3 fw-bold">Notifications</p>
+                                        <div class=" notification-red">
+                                            Reports
+                                        </div>
+                                        <div class=" notification-yellow mt-2">
+                                            Reports
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
-                        </div>
-                        
+
                     </div>
                 </div>
 
@@ -648,7 +653,7 @@ export default {
 
             // Navigate to the next page
             this.$router
-                .push({ name: 'PatientDetails', params: { id } })
+                .push({ name: 'CareSummary', params: { id } })
                 .catch((err) => {
                     if (err.name !== 'NavigationDuplicated') {
                         console.error(err);
@@ -755,10 +760,12 @@ export default {
     color: black;
 }
 
-@media (max-width: 768px) {
-    .search-bar input {
-        max-width: 100%;
+@media (max-width:991px) {
+
+    .custom-space {
+        margin-top: 10px;
     }
+
 }
 
 

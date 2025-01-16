@@ -1,158 +1,163 @@
 <template>
-    <div class="container-fluid   pb-4 mb-4 " >
+    <div class="container-fluid   pb-4 mb-4 ">
 
-        
+
         <div class="row g-2 pb-4">
 
             <div class="col-12 col-lg-3 col-xl-2">
 
-                <div class="card  patient-card w-100 h-100 custom-space" >
+                <div class="card  patient-card mb-0 pb-0 w-100 h-100 custom-space">
                     <div class="card-body">
 
-
-                        <div class=" col-md-6 col-lg-12 col-xl-12">
-                            <div class="d-flex flex-column align-items-center">
-                                <div class="text-center mb-4">
-                                    <img :src="patientData.image" alt="Profile" class="rounded-circle mb-2"
-                                        style="width: 100px; height: 100px;" />
-                                    <p class="mb-1 lg-paragraph">{{ patientData.name }}</p>
-                                </div>
-                                <div class="row w-100 text-center">
-                                    <div class="col-6">
-                                        <p class="mb-1"><strong>Age</strong></p>
-                                        <p class="md-paragraph">{{ patientData.age }} yrs</p>
+                        <div class="row">
+                            <div class=" col-md-6 col-lg-12 col-xl-12">
+                                <div class="d-flex flex-column align-items-center">
+                                    <div class="text-center mb-4">
+                                        <img :src="patientData.image" alt="Profile" class="rounded-circle mb-2"
+                                            style="width: 100px; height: 100px;" />
+                                        <p class="mb-1 lg-paragraph">{{ patientData.name }}</p>
                                     </div>
-                                    <div class="col-6">
-                                        <p class="mb-1"><strong>MRN</strong></p>
-                                        <p class="md-paragraph">{{ patientData.mrn }}</p>
-                                    </div>
-                                    <div class="col-6">
-                                        <p class="mb-1"><strong>Patient ID</strong></p>
-                                        <p class="md-paragraph">{{ patientData.id }}</p>
-                                    </div>
-                                    <div class="col-6">
-                                        <p class="mb-1"><strong>Gender</strong></p>
-                                        <p class="md-paragraph">{{ patientData.gender }}</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class=" col-md-6 col-lg-12 col-xl-12">
-                            <div class="lines mb-3"></div>
-
-                            <div>
-                                <p class="mb-3 text-center "><strong>Upcoming Appointments</strong></p>
-
-                                <div v-for="(appointment, index) in patientData.appointments" :key="index"
-                                    class="d-flex justify-content-center align-items-center flex-column mt-2 mb-2">
-                                    <div class="appointment-item d-flex align-items-center mb-0 pb-0">
-                                        <div :class="['status-dot', `bg-${appointment.status}`, 'me-2']"></div>
-                                        <div>
-                                            <p class="mb-1 text-center">{{ appointment.time }}</p>
+                                    <div class="row w-100 text-center">
+                                        <div class="col-6">
+                                            <p class="mb-1"><strong>Age</strong></p>
+                                            <p class="md-paragraph">{{ patientData.age }} yrs</p>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="mb-1"><strong>MRN</strong></p>
+                                            <p class="md-paragraph">{{ patientData.mrn }}</p>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="mb-1"><strong>Patient ID</strong></p>
+                                            <p class="md-paragraph">{{ patientData.id }}</p>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="mb-1"><strong>Gender</strong></p>
+                                            <p class="md-paragraph">{{ patientData.gender }}</p>
                                         </div>
                                     </div>
-                                    <div class="mt-0 pt-0 px-3 text-center">
-                                        <p class="mb-1 text-primary">{{ appointment.type }}</p>
-                                        <p class="text-muted small">{{ appointment.doctor }}</p>
+                                </div>
+
+                            </div>
+                            <div class=" col-md-6 col-lg-12  col-xl-12">
+                                <div class="lines mb-3 d-none d-lg-block"></div>
+
+                                <div>
+                                    <p class="mb-3 text-center "><strong>Upcoming Appointments</strong></p>
+
+                                    <div v-for="(appointment, index) in patientData.appointments" :key="index"
+                                        class="d-flex justify-content-center align-items-center flex-column mt-2 mb-2">
+                                        <div class="appointment-item d-flex align-items-center mb-0 pb-0">
+                                            <div :class="['status-dot', `bg-${appointment.status}`, 'me-2']"></div>
+                                            <div>
+                                                <p class="mb-1 text-center">{{ appointment.time }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="mt-0 pt-0 px-3 text-center">
+                                            <p class="mb-1 text-primary">{{ appointment.type }}</p>
+                                            <p class="text-muted small">{{ appointment.doctor }}</p>
+                                        </div>
                                     </div>
+
+
+                                    <div class="lines mb-4" v-if="patientData.appointments.length > 0"></div>
                                 </div>
 
 
-                                <div class="lines mb-4" v-if="patientData.appointments.length > 0"></div>
+
                             </div>
+
+
+
                         </div>
-                  
+                    </div>
 
                 </div>
 
-                </div>
             </div>
 
             <div class="col-12 col-lg-9 col-xl-10">
-                        <div class="card  h-100  custom-space" >
-                            <div class="card-body">
+                <div class="card  h-100  custom-space">
+                    <div class="card-body">
 
-                                <!-- Tabs -->
-                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link active tab fs-5 fw-medium" id="working-progress-tab"
-                                            data-bs-toggle="tab" data-bs-target="#working-progress" type="button"
-                                            role="tab" aria-controls="working-progress" aria-selected="true">
-                                            Working Progress Summary
-                                        </button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link tab fs-5 fw-medium" id="generate-report-tab "
-                                            data-bs-toggle="tab" data-bs-target="#generate-report" type="button"
-                                            role="tab" aria-controls="generate-report" aria-selected="false">
-                                            Generate Medical Report
-                                        </button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link tab fs-5 fw-medium" id="discharge-plan-tab"
-                                            data-bs-toggle="tab" data-bs-target="#discharge-plan" type="button"
-                                            role="tab" aria-controls="discharge-plan" aria-selected="false">
-                                            Discharge Plan
-                                        </button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link tab fs-5 fw-medium" id="follow-up-tab"
-                                            data-bs-toggle="tab" data-bs-target="#follow-up" type="button" role="tab"
-                                            aria-controls="follow-up" aria-selected="false">
-                                            Follow up & Communication
-                                        </button>
-                                    </li>
-                                </ul>
-
-
-                                <div class="row   mt-2">
-                                    <div class="col-md-12 col-xl-8 ">
-                                        <div class="row mt-4">
-                                            <div class="card" style="background: #F8F8F8; border: none;">
-                                            
+                        <!-- Tabs -->
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active tab fs-5 fw-medium" id="working-progress-tab"
+                                    data-bs-toggle="tab" data-bs-target="#working-progress" type="button" role="tab"
+                                    aria-controls="working-progress" aria-selected="true">
+                                    Working Progress Summary
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link tab fs-5 fw-medium" id="generate-report-tab "
+                                    data-bs-toggle="tab" data-bs-target="#generate-report" type="button" role="tab"
+                                    aria-controls="generate-report" aria-selected="false">
+                                    Generate Medical Report
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link tab fs-5 fw-medium" id="discharge-plan-tab" data-bs-toggle="tab"
+                                    data-bs-target="#discharge-plan" type="button" role="tab"
+                                    aria-controls="discharge-plan" aria-selected="false">
+                                    Discharge Plan
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link tab fs-5 fw-medium" id="follow-up-tab" data-bs-toggle="tab"
+                                    data-bs-target="#follow-up" type="button" role="tab" aria-controls="follow-up"
+                                    aria-selected="false">
+                                    Follow up & Communication
+                                </button>
+                            </li>
+                        </ul>
 
 
-                                                    <!-- Tab Content -->
-                                                    <div class="tab-content " id="myTabContent">
-                                                        <div class="tab-pane fade show active" id="working-progress"
-                                                            role="tabpanel" aria-labelledby="working-progress-tab">
-                                                            <WorkingProgressSummary :patient-data="patientData" />
-                                                        </div>
-                                                        <div class="tab-pane fade" id="generate-report" role="tabpanel"
-                                                            aria-labelledby="generate-report-tab">
-                                                            <!-- <GenerateMedicalReport  /> -->
-                                                            <GenerateMedicalReport :patient-data="patientData" />
+                        <div class="row   mt-2">
+                            <div class="col-md-12 col-xl-8 ">
+                                <div class="row mt-4">
+                                    <div class="card" style="background: #F8F8F8; border: none;">
 
-                                                        </div>
-                                                        <div class="tab-pane fade" id="discharge-plan" role="tabpanel"
-                                                            aria-labelledby="discharge-plan-tab">
-                                                            <!-- <DischargePlan /> -->
-                                                            <DischargePlan
-                                                                :discharge-plan="patientData.dischargePlan" />
-                                                        </div>
-                                                        <div class="tab-pane fade" id="follow-up" role="tabpanel"
-                                                            aria-labelledby="follow-up-tab">
-                                                            <FollowUpCommunication :patient-data="patientData" />
-                                                        </div>
-                                                    </div>
-                                               
+
+
+                                        <!-- Tab Content -->
+                                        <div class="tab-content " id="myTabContent">
+                                            <div class="tab-pane fade show active" id="working-progress" role="tabpanel"
+                                                aria-labelledby="working-progress-tab">
+                                                <WorkingProgressSummary :patient-data="patientData" />
                                             </div>
+                                            <div class="tab-pane fade" id="generate-report" role="tabpanel"
+                                                aria-labelledby="generate-report-tab">
+                                                <!-- <GenerateMedicalReport  /> -->
+                                                <GenerateMedicalReport :patient-data="patientData" />
 
+                                            </div>
+                                            <div class="tab-pane fade" id="discharge-plan" role="tabpanel"
+                                                aria-labelledby="discharge-plan-tab">
+                                                <!-- <DischargePlan /> -->
+                                                <DischargePlan :discharge-plan="patientData.dischargePlan" />
+                                            </div>
+                                            <div class="tab-pane fade" id="follow-up" role="tabpanel"
+                                                aria-labelledby="follow-up-tab">
+                                                <FollowUpCommunication :patient-data="patientData" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12 col-xl-4">
-                                        <div class="row  mt-4 ">
-                                            <CommonContent />
-                                        </div>
-
 
                                     </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-xl-4">
+                                <div class="row  mt-4 ">
+                                    <CommonContent />
                                 </div>
 
-                         </div>
+
+                            </div>
                         </div>
-                   
+
+                    </div>
+                </div>
+
 
             </div>
         </div>
@@ -171,7 +176,7 @@ import CommonContent from "@/doctor/CommonContent.vue";
 export default {
     name: "PatientDetails",
     components: {
-       
+
         WorkingProgressSummary,
         GenerateMedicalReport,
         DischargePlan,
@@ -924,7 +929,7 @@ export default {
 }
 
 
-.card{
+.card {
     border: 1px solid #EBEBEB;
 }
 
@@ -963,5 +968,4 @@ export default {
     font-size: 14px;
 
 }
-
 </style>

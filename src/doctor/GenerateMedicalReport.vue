@@ -2,10 +2,11 @@
 
             <!-- Header Section -->
 
-            <div class="mb-4 mt-4">
-                <p class="md-paragraph"> <strong> Wilson</strong>, <strong> #12345</strong>,<strong>Dr. Sarah
-                        Thompson</strong></p>
-            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-4">
+        <p class="mb-0">
+            <strong>James Wilson</strong>, #12345, <strong>Dr. Sarah Thompson</strong>
+        </p>
+    </div>
             <div class=" mt-4">
                 <div class="d-flex align-item-center gap-2">
 

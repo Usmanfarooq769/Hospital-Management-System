@@ -40,7 +40,8 @@
     </div>
     <!-- ECG -->
     <div class="col-md-6">
-      <div class="card text-start shadow-sm border-0 bg-light-blue px-4 h-100"  data-bs-toggle="modal" data-bs-target="#ecgModal">
+      <div class="card text-start shadow-sm border-0 bg-light-blue px-4 h-100" data-bs-toggle="modal"
+        data-bs-target="#ecgModal">
         <div class="card-body">
           <p class="card-title card-text-color fw-bold">
             <i class="bi bi-activity "></i> ECG
@@ -63,62 +64,71 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <!-- Modal Header -->
-        <div class="modal-header p-4">
-          <h5 class="modal-title mt-4  card-heading" id="bloodSampleModalLabel ">
+        <div class="modal-header px-4 pt-4">
+          <h5 class="modal-title mt-4  fs-4 fw-bold" id="bloodSampleModalLabel ">
             <i class="bi bi-droplet "></i> Blood Sample
           </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <!-- Modal Body -->
-        <div class="modal-body">
-          <!-- Test Required Section -->
-          <div class="mb-3">
-            <label class="form-label fw-bold">Test Required</label>
-            <div class="border p-3 rounded " style="background: #F8F8F8;">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="testCBC" />
-                <label class="form-check-label" for="testCBC">CBC</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="testChemistry" />
-                <label class="form-check-label" for="testChemistry">
-                  Chemistry Panel
+        <div class="modal-body mt-0 pt-0 ">
+          <div class="card" style="background: #F8F8F8; border: none;">
+            <div class="card-body">
+
+              <!-- Collection Time Section -->
+              <div class="mb-3">
+                <label for="collectionTime" class="form-label fw-bold">
+                  Collection Time
                 </label>
+                <input type="time" class="form-control" id="collectionTime" value="08:00" />
               </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="testCardiac" />
-                <label class="form-check-label" for="testCardiac">
-                  Cardiac Enzymes
+
+              <!-- Collection Site Section -->
+              <div class="mb-3">
+                <label for="collectionSite" class="form-label fw-bold">
+                  Collection Site
                 </label>
+                <input type="text" class="form-control" id="collectionSite" value="Left Arm" />
+              </div>
+
+              <!-- Test Required Section -->
+              <div class="mb-3">
+                <label class="form-label fw-bold">Test Required</label>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="testCBC" />
+                  <label class="form-check-label" for="testCBC">CBC</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="testChemistry" />
+                  <label class="form-check-label" for="testChemistry">
+                    Chemistry Panel
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="testCardiac" />
+                  <label class="form-check-label" for="testCardiac">
+                    Cardiac Enzymes
+                  </label>
+                </div>
+
+              </div>
+
+              <!-- Collection Notes Section -->
+              <div class="mb-3">
+                <label for="collectionNotes" class="form-label fw-bold">
+                  Collection Notes
+                </label>
+                <textarea class="form-control" id="collectionNotes" rows="3"
+                  placeholder="Enter notes here..."></textarea>
               </div>
             </div>
           </div>
-
-          <!-- Collection Time Section -->
-          <div class="mb-3">
-            <label for="collectionTime" class="form-label fw-bold">
-              Collection Time
-            </label>
-            <input type="time" class="form-control" id="collectionTime" value="08:00" />
-          </div>
-
-          <!-- Collection Site Section -->
-          <div class="mb-3">
-            <label for="collectionSite" class="form-label fw-bold">
-              Collection Site
-            </label>
-            <input type="text" class="form-control" id="collectionSite" value="Left Arm" />
-          </div>
-
-          <!-- Collection Notes Section -->
-          <div class="mb-3">
-            <label for="collectionNotes" class="form-label fw-bold">
-              Collection Notes
-            </label>
-            <textarea class="form-control" id="collectionNotes" rows="3" placeholder="Enter notes here..."></textarea>
-          </div>
         </div>
+
+
+
 
         <!-- Modal Footer -->
         <div class="modal-footer">
@@ -138,62 +148,68 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content no-border-modal ">
         <!-- Modal Header -->
-        <div class="modal-header p-4">
-          <h5 class="modal-title card-heading" id="urineSampleModalLabel">
+        <div class="modal-header px-4 pt-4">
+          <h5 class="modal-title fs-4 fw-bold" id="urineSampleModalLabel">
             <i class="bi bi-water"></i> Urine Sample
           </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <!-- Modal Body -->
-        <div class="modal-body">
-          <!-- Sample Details -->
-          <div class="mb-3">
-            <label class="form-label fw-bold">Sample Details</label>
-            <div class="border p-3 rounded " style="background: #F8F8F8;">
-              <!-- Sample Type -->
+        <div class="modal-body mt-0 pt-0">
+          <div class="card" style="background: #F8F8F8;">
+            <div class="card-body">
+
+              <!-- Sample Details -->
               <div class="mb-3">
-                <label for="sampleType" class="form-label">Sample Type</label>
-                <input type="text" class="form-control" id="sampleType" value="Clean Catch" readonly />
-              </div>
+                <label class="form-label fw-bold">Sample Details</label>
 
-              <div class="mb-3 ">
-                <label for="sampleType" class="form-label fw-bold">Sample Type</label>
-                <select class="form-select" id="sampleType" name="sampleType">
-                  <option value="" selected disabled>Select a Sample</option>
-                  <option value="vital_signs_out_of_range">Clean Catch</option>
-                  <option value="awaiting_lab_results">Catheter Specimen</option>
-                  <option value="npo_status">24 Hour Collection </option>
+                <!-- Sample Type -->
+                <div class="mb-3">
+                  <label for="sampleType" class="form-label">Sample Type</label>
+                  <input type="text" class="form-control" id="sampleType" value="Clean Catch" readonly />
+                </div>
 
-                </select>
-              </div>
+                <div class="mb-3 ">
+                  <label for="sampleType" class="form-label fw-bold">Sample Type</label>
+                  <select class="form-select" id="sampleType" name="sampleType">
+                    <option value="" selected disabled>Select a Sample</option>
+                    <option value="vital_signs_out_of_range">Clean Catch</option>
+                    <option value="awaiting_lab_results">Catheter Specimen</option>
+                    <option value="npo_status">24 Hour Collection </option>
 
-              <!-- Test Required -->
-              <div>
-                <label class="form-label fw-bold">Test Required</label>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="testUrinalysis" />
-                  <label class="form-check-label" for="testUrinalysis">
-                    Urinalysis
+                  </select>
+                </div>
+
+                <!-- Test Required -->
+                <div>
+                  <label class="form-label fw-bold">Test Required</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="testUrinalysis" />
+                    <label class="form-check-label" for="testUrinalysis">
+                      Urinalysis
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="testCulture" />
+                    <label class="form-check-label" for="testCulture">Culture</label>
+                  </div>
+                </div>
+
+                <!-- Collection Notes -->
+                <div class="mb-3">
+                  <label for="collectionNotes" class="form-label fw-bold">
+                    Collection Notes
                   </label>
+                  <textarea class="form-control" id="collectionNotes" rows="3"
+                    placeholder="Enter notes here..."></textarea>
                 </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="testCulture" />
-                  <label class="form-check-label" for="testCulture">Culture</label>
-                </div>
-              </div>
 
-              <!-- Collection Notes -->
-              <div class="mb-3">
-                <label for="collectionNotes" class="form-label fw-bold">
-                  Collection Notes
-                </label>
-                <textarea class="form-control" id="collectionNotes" rows="3"
-                  placeholder="Enter notes here..."></textarea>
-              </div>
 
+              </div>
             </div>
           </div>
+
 
 
         </div>
@@ -217,51 +233,55 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content no-border-modal">
         <!-- Modal Header -->
-        <div class="modal-header p-4">
-          <h5 class="modal-title card-heading" id="imagingModalLabel">
+        <div class="modal-header px-4 pt-6">
+          <h5 class="modal-title fs-4 fw-bold" id="imagingModalLabel">
             <i class="bi bi-camera "></i> Imaging
           </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <!-- Modal Body -->
-        <div class="modal-body">
-          <!-- Order Details -->
-          <div class="mb-3">
-            <label class="form-label fw-bold">Order Details</label>
-            <div class="border p-3 rounded " style="background: #F8F8F8;">
-              <!-- Type of Imaging -->
-              <div class="mb-3">
-                <label for="typeOfImaging" class="form-label">Type of Imaging</label>
-                <select class="form-select" id="typeOfImaging">
-                  <option value="Chest X-ray">Chest X-ray</option>
-                  <option value="CT Scan">CT Scan</option>
-                  <option value="MRI">MRI</option>
-                </select>
-              </div>
+        <div class="modal-body mt-0 pt-0">
 
-              <!-- Priority -->
+          <div class="card" style="background: #F8F8F8; border: none;">
+            <div class="card-body">
+              <!-- Order Details -->
               <div class="mb-3">
-                <label for="priority" class="form-label">Priority</label>
-                <select class="form-select" id="priority">
-                  <option value="Routine">Routine</option>
-                  <option value="Stat">Stat</option>
-                  <option value="Urgent">Urgent</option>
-                </select>
-              </div>
+                <label class="form-label fw-bold">Order Details</label>
 
-              <!-- Special Instructions -->
-              <div class="mb-3">
-                <label for="specialInstructions" class="form-label fw-bold">
-                  Special Instructions
-                </label>
-                <textarea class="form-control" id="specialInstructions" rows="3"
-                  placeholder="Enter any patient preparation requirement..."></textarea>
-              </div>
+                <!-- Type of Imaging -->
+                <div class="mb-3">
+                  <label for="typeOfImaging" class="form-label">Type of Imaging</label>
+                  <select class="form-select" id="typeOfImaging">
+                    <option value="Chest X-ray">Chest X-ray</option>
+                    <option value="CT Scan">CT Scan</option>
+                    <option value="MRI">MRI</option>
+                  </select>
+                </div>
 
+                <!-- Priority -->
+                <div class="mb-3">
+                  <label for="priority" class="form-label">Priority</label>
+                  <select class="form-select" id="priority">
+                    <option value="Routine">Routine</option>
+                    <option value="Stat">Stat</option>
+                    <option value="Urgent">Urgent</option>
+                  </select>
+                </div>
+
+                <!-- Special Instructions -->
+                <div class="mb-3">
+                  <label for="specialInstructions" class="form-label fw-bold">
+                    Special Instructions
+                  </label>
+                  <textarea class="form-control" id="specialInstructions" rows="3"
+                    placeholder="Enter any patient preparation requirement..."></textarea>
+                </div>
+
+
+              </div>
             </div>
           </div>
-
 
         </div>
 
@@ -282,48 +302,54 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content no-border-modal">
         <!-- Modal Header -->
-        <div class="modal-header p-4">
-          <h5 class="modal-title card-heading" id="ecgModalLabel">
+        <div class="modal-header px-4 pt-4">
+          <h5 class="modal-title fs-4 fw-bold" id="ecgModalLabel">
             <i class="bi bi-activity "></i> ECG
           </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <!-- Modal Body -->
-        <div class="modal-body">
-          <!-- ECG Details -->
-          <div class="mb-3">
-            <label class="form-label fw-bold">ECG Details</label>
-            <div class="border p-3 rounded " style="background: #F8F8F8;">
-              <!-- Type Dropdown -->
-              <div class="mb-3">
-                <label for="typeOfECG" class="form-label fw-bold">Type</label>
-                <select class="form-select" id="typeOfECG">
-                  <option value="12 Lead ECG">12 Lead ECG</option>
-                  <option value="Rhythm Strip">Rhythm Strip</option>
-                </select>
-              </div>
+        <div class="modal-body pt-0 mt-0">
+          <div class="card" style="background: #F8F8F8; border: none;">
+            <div class="card-body">
 
-              <!-- Priority Dropdown -->
+              <!-- ECG Details -->
               <div class="mb-3">
-                <label for="priorityECG" class="form-labe fw-boldl">Priority</label>
-                <select class="form-select" id="priorityECG">
-                  <option value="Routine">Routine</option>
-                  <option value="Stat">Stat</option>
-                  <option value="Urgent">Urgent</option>
-                </select>
-              </div>
+                <label class="form-label fw-bold">ECG Details</label>
 
-              <!-- Recording Notes -->
-              <div class="mb-3">
-                <label for="recordingNotes" class="form-label fw-bold">
-                  Recording Notes
-                </label>
-                <textarea class="form-control" id="recordingNotes" rows="3"
-                  placeholder="Enter any relevant observation..."></textarea>
+                <!-- Type Dropdown -->
+                <div class="mb-3">
+                  <label for="typeOfECG" class="form-label fw-bold">Type</label>
+                  <select class="form-select" id="typeOfECG">
+                    <option value="12 Lead ECG">12 Lead ECG</option>
+                    <option value="Rhythm Strip">Rhythm Strip</option>
+                  </select>
+                </div>
+
+                <!-- Priority Dropdown -->
+                <div class="mb-3">
+                  <label for="priorityECG" class="form-labe fw-boldl">Priority</label>
+                  <select class="form-select" id="priorityECG">
+                    <option value="Routine">Routine</option>
+                    <option value="Stat">Stat</option>
+                    <option value="Urgent">Urgent</option>
+                  </select>
+                </div>
+
+                <!-- Recording Notes -->
+                <div class="mb-3">
+                  <label for="recordingNotes" class="form-label fw-bold">
+                    Recording Notes
+                  </label>
+                  <textarea class="form-control" id="recordingNotes" rows="3"
+                    placeholder="Enter any relevant observation..."></textarea>
+                </div>
+
               </div>
             </div>
           </div>
+
 
 
         </div>
@@ -367,8 +393,7 @@ export default {
 
 }
 
-.card{
-    border: none;
+.card {
+  border: none;
 }
-
 </style>

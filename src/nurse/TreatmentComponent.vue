@@ -83,7 +83,7 @@
         <div class="modal-dialog">
             <div class="modal-content p-4">
                 <div class="modal-header">
-                    <h5 class="modal-title card-heading" id="staticBackdropLabel mt-4">Medication Details</h5>
+                    <h5 class="modal-title fs-4 fw-bold" id="staticBackdropLabel mt-4">Medication Details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -150,7 +150,7 @@
         <div class="modal-dialog">
             <div class="modal-content p-4">
                 <div class="modal-header">
-                    <h5 class="modal-title card-heading" id="staticBackdropLabel mt-4">Medication Hold</h5>
+                    <h5 class="modal-title fs-4 fw-bold" id="staticBackdropLabel mt-4">Medication Hold</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

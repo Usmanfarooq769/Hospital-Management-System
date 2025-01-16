@@ -8,7 +8,7 @@
                 <div class="card px-3 pt-4 pb-2 shadow-sm" style="border: 1px solid #EBEBEB;">
                     <div class="row">
                         <div class="col-md-6 col-xl-12">
-                           
+
                             <!-- Date and Time -->
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <div>
@@ -26,12 +26,14 @@
                                     <HeartRateChart :labels="chartLabels" :data="chartData" />
                                 </div>
                             </div>
-                        
+
                         </div>
                         <div class="col-md-6 col-xl-12">
                             <!-- Health Metrics -->
                             <div class=" col-xl-p-3 mt-2 px-2">
-                                <div class="row">
+                                
+
+                                <div class="row ">
                                     <div
                                         class="d-flex justify-content-between align-items-center health-metrics-card p-2">
                                         <div class="">
@@ -84,6 +86,7 @@
 
                                     </div>
                                 </div>
+                               
 
 
 
@@ -175,8 +178,10 @@ export default {
 
 
 <style scoped>
-
-
+.health-metrics-card{
+    background: #F8F8F8;
+    border-radius: 8px;
+}
 .btn {
     border: 1px solid #00A0DA;
     color: #00A0DA;

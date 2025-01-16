@@ -5,7 +5,7 @@
             <div class=" col-12 col-lg-9 ">
                 <!-- Welcome and Search Section -->
                 <div class="d-flex justify-content-between align-items-center mb-4  custom-space">
-                    <h2>Welcome, Dr. Smith!</h2>
+                    <h2 class="fs-3 fw-bold">Welcome, Dr. Smith!</h2>
                     <div class="search-bar">
                         <input type="text" class="form-control" placeholder="Search" aria-label="Search" />
                     </div>
@@ -16,16 +16,16 @@
                     <div class="col-md-3">
                         <div class="card text-center p-2   h-100">
                             <i class="bi bi-calendar-event mb-1 " style="font-size: 24px;color: #00A0DA;"></i>
-                            <p class="text-muted fw-bold mb-0 pb-0">Appointments</p>
-                            <p class="lg-paragraph mt-1 pt-0">08 Today</p>
+                            <p class="  fw-bold mb-0 pb-0">Appointments</p>
+                            <small class="text-muted mt-1 pt-0">08 Today</small>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="card text-center p-2   h-100" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             <i class="bi bi-people text-success mb-1" style="font-size: 24px;"></i>
-                            <p class="text-muted fw-bold mb-0 pb-0">Patients</p>
-                            <p class="lg-paragraph mt-1 pt-0" >8
-                                Active</p>
+                            <p class="  fw-bold mb-0 pb-0">Patients</p>
+                            <small class="text-muted mt-1 pt-0" >8
+                                Active</small>
 
                         </div>
                     </div>
@@ -82,15 +82,15 @@
                     <div class="col-md-3">
                         <div class="card text-center p-2   h-100">
                             <i class="bi bi-clock text-warning mb-1" style="font-size: 24px;"></i>
-                            <p class="text-muted fw-bold mb-0 pb-0">On Duty</p>
-                            <p class="lg-paragraph mt-1 pt-0">Until 6 PM</p>
+                            <p class="  fw-bold mb-0 pb-0">On Duty</p>
+                            <small class="text-muted mt-1 pt-0">Until 6 PM</small>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="card text-center p-2   h-100">
                             <i class="bi bi-file-text text-purple mb-1" style="font-size: 24px;"></i>
-                            <p class="text-muted fw-bold mb-0 pb-0">Reports</p>
-                            <p class="lg-paragraph mt-1 pt-0">05 Pending</p>
+                            <p class="  fw-bold mb-0 pb-0">Reports</p>
+                            <small class="text-muted mt-1 pt-0">05 Pending</small>
                         </div>
                     </div>
                 </div>
@@ -109,9 +109,9 @@
                                         <div class="d-flex align-items-center justify-content-between mb-0 pb-0 mt-2">
                                             <div class="div">
                                                 <p class="mb-0 fw-bold">{{ appointment.name }}</p>
-                                                <p class="mb-0 fs-6">{{ appointment.type
+                                                <small class="mb-0 text-muted">{{ appointment.type
                                                         }}
-                                                </p>
+                                                </small>
                                             </div>
                                             <div class="div">
                                                 <p class="mb-0 pb-0 fs-6">{{ appointment.time }}</p>
@@ -135,8 +135,8 @@
                                         <div class="d-flex align-items-center justify-content-between mb-0 pb-0">
                                             <div class="div">
                                                 <p class="mb-0 fw-bold">{{ patient.name }}</p>
-                                                <p class="mb-0 fs-6"><strong class="md-paragraph">Room: {{ patient.room
-                                                        }}</strong></p>
+                                                <small class="mb-0 text-muted"><strong class="md-paragraph">Room: {{ patient.room
+                                                        }}</strong></small>
                                             </div>
                                             <div class="div text-center">
                                                 <span :class="[
@@ -168,7 +168,7 @@
                                 <i class="bi bi-clock me-2" style="font-size: 24px; color:#00A0DA;"></i>
                                 <p class="mb-0 fw-bold">Working Progress</p>
                             </div>
-                            <p class="mb-0 lg-heading">28</p>
+                            <p class="mb-0 lg-heading custom-color">28</p>
                             <small class="text-muted">Active Patient cases</small>
                         </div>
                     </div>
@@ -179,7 +179,7 @@
                                 <i class="bi bi-file-text me-2" style="font-size: 24px; color:#00A0DA;"></i>
                                 <p class="mb-0 fw-bold">Medical Reports</p>
                             </div>
-                            <p class="mb-0 lg-heading">156</p>
+                            <p class="mb-0 lg-heading custom-color">156</p>
                             <small class="text-muted">Generated this month</small>
                         </div>
                     </div>
@@ -190,7 +190,7 @@
                                 <i class="bi bi-file-text me-2" style="font-size: 24px; color:#00A0DA;"></i>
                                 <p class="mb-0 fw-bold">Discharge Plan</p>
                             </div>
-                            <p class="mb-0 lg-heading">156</p>
+                            <p class="mb-0 lg-heading custom-color">106</p>
                             <small class="text-muted">Pending Review</small>
                         </div>
                     </div>
@@ -201,7 +201,7 @@
                                 <i class="bi bi-file-text me-2" style="font-size: 24px; color:#00A0DA;"></i>
                                 <p class="mb-0 fw-bold">Follow ups</p>
                             </div>
-                            <p class="mb-0 lg-heading">156</p>
+                            <p class="mb-0 lg-heading custom-color">125</p>
                             <small class="text-muted">Schedule this week</small>
                         </div>
                     </div>
@@ -646,6 +646,9 @@ export default {
 
 
 <style scoped>
+.custom-color{
+    color: #00a0da;
+}
 .emergency-bg {
     background: #FF26261A;
     color: #FF2626;
@@ -707,7 +710,7 @@ export default {
 }
 
 .custom-scrollbar {
-    max-height: 612px;
+    max-height: 630px;
 }
 
 .text-purple {
