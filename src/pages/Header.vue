@@ -13,7 +13,7 @@
       
 
       <!-- Nurse Icon -->
-      <div class="icon-btn"@click="$router.push('/Doctor')" >
+      <div class="icon-btn" @click="$router.push('/Doctor')" >
         <img src="@/assets/images/user-doctor-solid.svg" alt="Login Illustration"
           class="img-fluid mb-4 bg-light-blue pages-images" style="max-height: 30px;" />
 
