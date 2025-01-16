@@ -2,7 +2,7 @@
     <!-- Current Medication Section -->
     <div class="card mt-2">
         <div class="card-body">
-            <h5 class="card-title fs-4 fw-bold mb-3">Current Medication</h5>
+            <h5 class="fs-4 fw-bold mb-3">Current Medication</h5>
             <div class="d-flex justify-content-between mb-3">
                 <button class="btn btn-primary btn-sm" style="background: #4588E0;">
                     Current Medication
@@ -61,7 +61,7 @@
     <!-- Treatment Guidelines -->
     <div class="card mt-2 h-100">
         <div class="card-body">
-            <h5 class="card-title">Treatment Guidelines</h5>
+            <h5 class="fs-4 fw-bold mb-3">Treatment Guidelines</h5>
             <div class="row">
                 <div class="col-12 col-md-6" v-for="(protocol, index) in treatmentGuidelines" :key="index">
                     <div class="card p-3 h-100" style="background: #F8F8F8;">
@@ -143,9 +143,6 @@
             </div>
         </div>
     </div>
-
-
-
 
     <!--Modal For Hold  Button -->
     <div class="modal fade" id="modalTwo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

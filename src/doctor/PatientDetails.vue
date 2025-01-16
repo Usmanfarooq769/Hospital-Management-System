@@ -1,12 +1,12 @@
 <template>
-    <div class="container-fluid  pb-4 mb-4  " >
+    <div class="container-fluid   pb-4 mb-4 " >
 
         
-        <div class="row">
+        <div class="row g-2 pb-4">
 
             <div class="col-12 col-lg-3 col-xl-2">
 
-                <div class="card  patient-card h-100 w-100  custom-space"  style="border: none;">
+                <div class="card  patient-card w-100 h-100 custom-space" >
                     <div class="card-body">
 
 
@@ -70,7 +70,7 @@
             </div>
 
             <div class="col-12 col-lg-9 col-xl-10">
-                        <div class="card h-100  custom-space" style="border: none;">
+                        <div class="card  h-100  custom-space" >
                             <div class="card-body">
 
                                 <!-- Tabs -->

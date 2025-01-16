@@ -794,6 +794,6 @@ export default {
 }
 
 .custom-scrollbar {
-    max-height: 330px;
+    max-height: 320px;
 }
 </style>

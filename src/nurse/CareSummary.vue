@@ -1,16 +1,15 @@
 <template>
     <div class="container-fluid   pb-4 mb-4">
 
-       
-        <div class="row top-space">
+
+        <div class="row g-2 pb-4">
 
 
+            <div class="col-12 col-lg-3 col-xl-2">
 
-            <div class="col-12 col-lg-3">
+                <div class="card  patient-card mb-0 pb-0 w-100 h-100 custom-space">
+                    <div class="card-body">
 
-                <div class="card  patient-card p-2 h-100 w-100 mt-2">
-
-                    <div class="row">
 
                         <div class=" col-md-6 col-lg-12 col-xl-12">
                             <div class="d-flex flex-column align-items-center">
@@ -63,35 +62,36 @@
 
                                 <div class="lines mb-4" v-if="patientData.appointments.length > 0"></div>
                             </div>
+                        </div>
+
+                        <div class="card shadow-sm" style="border: 1px solid #00A0DA; background: transparent">
+                            <div class="card-body text-center">
+
+                                <p class="fw-bold  text-color">Care Team </p>
+                                <p  class="mb-0 pb-0 fs-6">Dr Sara Thompson  </p>
+                                <small class="pt-0 mt-0 text-color">Primary Physician  </small>
+                                <p class="fs-6 mb-0 pb-0">Primary Physician </p>
+                                <small class="mt-0 pt-0 text-color">Primary Nurse</small>
+
+                    
+                
 
 
-                            <div class="card" style="background: transparent;">
-
-                                <div class="card-body text-center">
-                                    <p class="lg-paragraph" style="color: #00A0DA;">Care Team </p>
-                                    <p class="mb-0  pb-0 md-paragraph">Dr Sara Thompson </p>
-                                    <p class=" sm-paragraph pt-0 mt-0 " style="color: #00A0DA;">Primary Physician </p>
-                                    <p class=" lg-paragraph mb-0 pb-0 ">Primary Physician </p>
-                                    <p class="sm-paragraph mt-0 mb-0"  style="color: #00A0DA;">Primary Nurse</p>
-                                </div>
                             </div>
                         </div>
+
+
                     </div>
 
-
-
-
-
-
                 </div>
+                
             </div>
 
 
-            <div class="col-12 col-lg-9">
-                <div class="row ">
-                    <div class="col-md-12">
+            <div class="col-12 col-lg-9 col-xl-10">
+                
 
-                        <div class="card h-100 mt-2">
+                        <div class="card h-100  mb-0 pb-0 custom-space " >
                             <div class="card-body">
 
                                 <!-- Tabs -->
@@ -104,64 +104,79 @@
                                         </button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link tab fs-5 fw-medium" id="generate-report-tab" data-bs-toggle="tab"
-                                            data-bs-target="#generate-report" type="button" role="tab"
-                                            aria-controls="generate-report" aria-selected="false">
+                                        <button class="nav-link tab fs-5 fw-medium" id="generate-report-tab"
+                                            data-bs-toggle="tab" data-bs-target="#generate-report" type="button"
+                                            role="tab" aria-controls="generate-report" aria-selected="false">
                                             Vital Signs
                                         </button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link tab fs-5 fw-medium" id="discharge-plan-tab" data-bs-toggle="tab"
-                                            data-bs-target="#discharge-plan" type="button" role="tab"
-                                            aria-controls="discharge-plan" aria-selected="false">
+                                        <button class="nav-link tab fs-5 fw-medium" id="discharge-plan-tab"
+                                            data-bs-toggle="tab" data-bs-target="#discharge-plan" type="button"
+                                            role="tab" aria-controls="discharge-plan" aria-selected="false">
                                             Treatment Management
                                         </button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link tab fs-5 fw-medium" id="follow-up-tab" data-bs-toggle="tab"
-                                            data-bs-target="#follow-up" type="button" role="tab"
+                                        <button class="nav-link tab fs-5 fw-medium" id="follow-up-tab"
+                                            data-bs-toggle="tab" data-bs-target="#follow-up" type="button" role="tab"
                                             aria-controls="follow-up" aria-selected="false">
                                             Care Plan
                                         </button>
                                     </li>
                                 </ul>
 
-
                                 <div class="row mt-2">
                                     <div class="col-md-12 col-xl-9">
                                         <!-- Tab Content -->
-                                        <div class="tab-content mt-4" id="myTabContent">
+                                        <div class="tab-content mt-4 " id="myTabContent">
                                             <div class="tab-pane fade show active" id="working-progress" role="tabpanel"
                                                 aria-labelledby="working-progress-tab">
-                                                
+                                                <div class="card p-4 h-100 " style="background: #F8F8F8;">
+                                                    <div class="crad-body">
+
                                                 <CareSummaryTab :patient-data="patientData" />
+                                                </div>
+                                                </div>
                                             </div>
                                             <div class="tab-pane fade" id="generate-report" role="tabpanel"
                                                 aria-labelledby="generate-report-tab">
+                                                <div class="card p-4 h-100 " style="background: #F8F8F8;">
+                                                    <div class="crad-body">
                                                 <!-- <GenerateMedicalReport  /> -->
                                                 <VitalSignsTab :patient-data="patientData" />
+                                                    </div>
+                                                </div>
 
                                             </div>
                                             <div class="tab-pane fade" id="discharge-plan" role="tabpanel"
                                                 aria-labelledby="discharge-plan-tab">
+                                                <div class="card" style="background: #F8F8F8;">
+                                                    <div class="card-body">
                                                 <!-- <DischargePlan /> -->
                                                 <TreatmentTab :discharge-plan="patientData.dischargePlan" />
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="tab-pane fade" id="follow-up" role="tabpanel"
                                                 aria-labelledby="follow-up-tab">
                                                 <div class="card" style="background: #F8F8F8;">
-                                                    <div class="card-body px-4">
+                                                    <div class="card-body ">
 
                                                         <CarePlan :patient-data="patientData" />
                                                     </div>
                                                 </div>
-                                               
+
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12 col-xl-3">
                                         <div class="row  mt-4">
+                                            <div class="card  shadow-sm h-100" style="border: 1px solid #EBEBEB;">
+                                                <div class="card-body">
                                             <CommonContent />
+                                        </div>
+                                            </div>
                                         </div>
 
 
@@ -175,8 +190,7 @@
 
                             </div>
                         </div>
-                    </div>
-                </div>
+                  
 
             </div>
         </div>
@@ -188,7 +202,7 @@
 
 import CareSummaryTab from "@/nurse/CareSummaryTab.vue";
 import VitalSignsTab from "@/nurse/VitalSignsTab.vue";
-import TreatmentTab from "@/nurse/TreatmentTab";
+import TreatmentTab from "@/nurse/TreatmentTab.vue";
 import CarePlan from "@/nurse/CarePlan.vue";
 import CommonContent from "@/nurse/CommonContent.vue";
 
@@ -270,7 +284,7 @@ export default {
                                 name: "Diabetes follow-up",
                                 date: "12/17/2024",
                             },
-                            
+
                         ],
                         medicationSchedule: ["Morning: BP meds, metformin, aspirin", "Evening: statin"],
                         communicationMethod: {
@@ -620,18 +634,18 @@ export default {
                                 date: "1/9/2025",
                             },
                         ],
-                        medicationSchedule: ["Antifungal drops 3x daily" , "Treatment calendar provided"],
+                        medicationSchedule: ["Antifungal drops 3x daily", "Treatment calendar provided"],
                         communicationMethod: {
                             Primary: "Primary",
                             Secondary: "SMS",
                             Emergency: "none",
                             Language: "English",
                         },
-                        specialInstructions: ["Ear protection guide" , "Water exposure log"],
+                        specialInstructions: ["Ear protection guide", "Water exposure log"],
                     },
 
 
-                    
+
                 },
                 {
                     id: "123461",
@@ -694,7 +708,7 @@ export default {
                         lifestyleModification: ["Regular vision checks", " Calcium/vitamin D supplementation"],
                     },
 
-                    
+
 
                     communicationPlan: {
                         appointmentReminders: [
@@ -707,15 +721,15 @@ export default {
                                 date: "1/2/2025",
                             },
                         ],
-                        medicationSchedule: ["Prednisolone taper schedule" , "PPI daily"],
+                        medicationSchedule: ["Prednisolone taper schedule", "PPI daily"],
                         communicationMethod: {
 
                             Primary: "Phone",
                             Secondary: "none",
-                             Emergency: "Daughter",
-                              Language: "English",
+                            Emergency: "Daughter",
+                            Language: "English",
                         },
-                        specialInstructions: ["Vision diary" ,  "Steroid side effect monitoring"]
+                        specialInstructions: ["Vision diary", "Steroid side effect monitoring"]
                     }
                 },
                 {
@@ -783,15 +797,15 @@ export default {
                                 date: "12/27/2024",
                             },
                         ],
-                       
-                        medicationSchedule: ["Antibiotics schedule" , "Ear drops timing"],
+
+                        medicationSchedule: ["Antibiotics schedule", "Ear drops timing"],
                         communicationMethod: {
 
-                            Primary: "Phone" ,
-                            Secondary:"SMS",
+                            Primary: "Phone",
+                            Secondary: "SMS",
                             Language: "English",
                         },
-                        specialInstructions:["Temperature log" , "Discharge monitoring"],
+                        specialInstructions: ["Temperature log", "Discharge monitoring"],
                     }
                 },
                 {
@@ -860,15 +874,15 @@ export default {
                                 date: "12/30/2024",
                             },
                         ],
-                       
-                        medicationSchedule: ["Diabetes medications",  "BP medications"],
+
+                        medicationSchedule: ["Diabetes medications", "BP medications"],
                         communicationMethod: {
 
                             Primary: "Phone",
-                            Secondary:" Portal access provided",
-                             Language: "English",
+                            Secondary: " Portal access provided",
+                            Language: "English",
                         },
-                        specialInstructions: ["Bleeding diary" , "BP monitoring log"],
+                        specialInstructions: ["Bleeding diary", "BP monitoring log"],
                     }
                 },
             ],
@@ -896,6 +910,9 @@ export default {
 </script>
 
 <style scoped>
+.text-color{
+    color: #00A0DA;
+}
 .status-dot {
     width: 10px;
     height: 10px;
@@ -920,7 +937,7 @@ export default {
     width: 100%;
 }
 
-.nav-tabs{
+.nav-tabs {
     border: none !important;
 }
 
@@ -928,7 +945,7 @@ export default {
     color: #161B21;
 
     border: none;
-   
+
 }
 
 .nav-tabs .nav-link.active {
@@ -958,7 +975,7 @@ export default {
 
 .custom-scrollbar::-webkit-scrollbar-track {
     background-color: #ffff;
-   
+
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
@@ -969,9 +986,7 @@ export default {
     height: 4px !important;
 }
 
-.card{
+.card {
     border: 1px solid #EBEBEB;
 }
-
-
 </style>

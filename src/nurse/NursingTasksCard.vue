@@ -1,7 +1,7 @@
 <template>
-    <div>
+    
       <!-- Nursing Tasks Card -->
-      <div class="card mb-3">
+      <div class="card mb-2">
         <div class="card-body">
           <h5 class="card-title fs-4 fw-bold mb-3">Nursing Tasks</h5>
           <div class="row align-items-center py-2" v-for="task in tasks" :key="task.id">
@@ -23,7 +23,7 @@
   
       <!-- Recent Observations Card -->
       <div class="card">
-        <div class="card-body p-4">
+        <div class="card-body">
           <h5 class="card-title fs-4 fw-bold mb-3">Recent Observations</h5>
           <div class="row py-2 mb-2" v-for="observation in observations" :key="observation.id" style="background: #F8F8F8;border-radius: 6px;">
             <div class="col-md-10">
@@ -36,7 +36,7 @@
           </div>
         </div>
       </div>
-    </div>
+    
   </template>
   
   <script>

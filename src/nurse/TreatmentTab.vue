@@ -1,15 +1,10 @@
 <template>
-    <div class="card" style="background: #F8F8F8;">
-        <div class="card-body">
-
-
-            <div class="mt-2">
-                <p class="fw-bold"> <strong> Wilson</strong>, <strong> #12345</strong>,<strong>Dr. Sarah
-                        Thompson</strong></p>
+    
+            <div class="d-flex justify-content-between align-items-center ">
+                <p>
+                    <strong>James Wilson</strong>, #12345, <strong>Dr. Sarah Thompson</strong>
+                </p>
             </div>
-            <div class="mt-4">
-
-
                 <div class="row g-3">
                     <!-- Card 1 -->
                     <div class="col-12 col-md-6 col-lg-4">
@@ -38,25 +33,15 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
 
-            </div>
-
-           
-
             <div class="row g-2 mt-2">
+                
 
-               <TreatMentComponent />
+                <TreatMentComponent />
 
             </div>
-
-            
-
-
-        </div>
-    </div>
-
 
 </template>
 
@@ -116,13 +101,13 @@ export default {
 
 
 .card-1 {
-  
+
     color: #007bff;
     border-color: #007bff;
 }
 
 .card-2 {
-  
+
     color: #28a745;
     border-color: #28a745;
 }
@@ -134,7 +119,7 @@ export default {
 }
 
 .card-4 {
-   
+
     color: #fd7e14;
     border-color: #fd7e14;
 }
@@ -144,9 +129,8 @@ export default {
     transform: scale(1.05);
     cursor: pointer;
 }
-.bold-icon{
+
+.bold-icon {
     font-weight: bold !important;
 }
-
-
 </style>

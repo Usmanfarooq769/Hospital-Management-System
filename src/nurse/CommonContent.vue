@@ -2,11 +2,11 @@
    
 
        
-            <div class="col-12">
+            <div class="col-12 ">
 
                 <!-- Card -->
-                <div class="card px-3 pt-4 pb-2 shadow-sm" style="border: 1px solid #EBEBEB;">
-                    <div class="row">
+               
+                  
                         <div class="col-md-6 col-xl-12">
                            
                             <!-- Date and Time -->
@@ -92,53 +92,11 @@
                             </div>
 
                         </div>
-                    </div>
+               
 
-                </div>
-
-
-                <div class="row">
+               
 
 
-                    <!-- Buttons -->
-                    <div class="col-md-6 col-xl-12  ">
-                        <div class="card h-100" style="border: none; border-radius: none; background: transparent;">
-
-                            <button class="btn  w-100 mt-2">Recommended
-                                Procedures</button>
-                            <button class="btn  w-100 mt-2">Medications</button>
-                            <button class="btn  w-100 mt-2">Allergies</button>
-                            <button class="btn  w-100 mt-2">Family History</button>
-                            <button class="btn  w-100 mt-2">Personal History</button>
-
-                        </div>
-
-                    </div>
-
-                    <!-- Working Progress Summary -->
-                    <div class=" col-md-6 col-xl-12">
-                        <div class="mt-2 card p-3 h-100  shadow-sm" style="border: 1px solid #EBEBEB;">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <div class="mt-2"><i class="bi bi-person-circle text-success"></i> Active Patients
-                                </div>
-                                <i class="bi bi-chevron-right"></i>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mb-2 mt-2">
-                                <div><i class="bi bi-file-earmark-plus text-warning"></i> Attach
-                                    Template</div>
-                                <i class="bi bi-chevron-right"></i>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mb-2 mt-2">
-                                <div><i class="bi bi-people text-primary"></i> Similar Patients</div>
-                                <i class="bi bi-chevron-right"></i>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mt-2">
-                                <div><i class="bi bi-graph-up text-danger"></i> Analytical Report</div>
-                                <i class="bi bi-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
             </div>
       
@@ -176,7 +134,9 @@ export default {
 
 <style scoped>
 
-
+.health-metrics-card {
+    background: #F8F8F8;
+}
 .btn {
     border: 1px solid #00A0DA;
     color: #00A0DA;

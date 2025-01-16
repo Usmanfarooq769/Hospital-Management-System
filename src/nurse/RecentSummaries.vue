@@ -1,5 +1,5 @@
 <template>
-    <div class="card p-3 mb-3">
+       
       <h6 class="fs-4 fw-bold mb-3">Recent Summaries</h6>
       <div class="summary-item mb-3 px-4" v-for="summary in summaries" :key="summary.id" style="background: #F8F8F8;border-radius: 6px;">
         <div class="d-flex align-items-center mb-2 text-muted">
@@ -8,8 +8,8 @@
           <span class="ms-3 fs-6">{{ summary.date }}</span>
         </div>
         <p class="mb-0 fs-6">{{ summary.text }}</p>
-      </div>
-    </div>
+     
+  </div>
   </template>
   
   <script>

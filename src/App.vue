@@ -48,6 +48,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   background:#F8F8F8;
   color:#161B21;
+  padding-bottom:7px;
 
 }
  .main-heading{

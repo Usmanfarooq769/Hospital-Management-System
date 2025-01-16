@@ -1,89 +1,58 @@
 <template>
-    <div class="card p-4  " style="background: #F8F8F8;">
-        <!-- Header -->
-        <div class="d-flex justify-content-between align-items-center mt-2 mb-4">
-            <p class="mb-0">
-                <strong>James Wilson</strong>, #12345, <strong>Dr. Sarah Thompson</strong>
-            </p>
-        </div>
 
-        <!-- Patient Info -->
-        <div v-if="patientData">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center">
-                    <img :src="patientData.image" alt="Profile" class="rounded-circle"
-                        style="width: 50px; height: 50px;" />
-                    <div class="px-3">
-                        <p class="mb-0 md-paragraph">{{ patientData.name }}</p>
-                        <small class="text-muted">
-                            ID: {{ patientData.id }} • {{ patientData.department }}
-                        </small>
+
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center ">
+        <p>
+            <strong>James Wilson</strong>, #12345, <strong>Dr. Sarah Thompson</strong>
+        </p>
+    </div>
+
+    <!-- Patient Info -->
+    <div v-if="patientData">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img :src="patientData.image" alt="Profile" class="rounded-circle" style="width: 50px; height: 50px;" />
+                <div class="px-3">
+                    <p class="mb-0 md-paragraph">{{ patientData.name }}</p>
+                    <small class="text-muted">
+                        ID: {{ patientData.id }} • {{ patientData.department }}
+                    </small>
+                </div>
+            </div>
+            <span class="badge activ-badge text-light px-3 py-2">Active</span>
+        </div>
+    </div>
+    <div v-else>
+        <p>Loading patient data...</p>
+    </div>
+
+    <div class="row mt-4">
+        <div class="card">
+            <div class="card-body">
+                <p class=" fs-4 fw-bold">Last updated: Dec 14, 2024 8:00 am </p>
+                <p class="fs-6">55yo male with acute chest pain, <small class="fs-6" style="color: #4588E0;">likely ACS.
+                        HTN, T2DM</small> history. VS: BP 150/90, HR 98, RR 22, O2 94%. Active cardiac workup in
+                    progress.</p>
+
+                <div class="d-flex align-item-ceneter gap-4">
+                    <div class="div">
+                        <button class="btn btn-next-vital">Next Vital Signs Due 10:00 AM</button>
                     </div>
+                    <div class="div">
+                        <button class="btn btn-next-medication">Next Medication Due 10:00 AM</button>
+                    </div>
+
+
                 </div>
-                <span class="badge activ-badge text-light px-3 py-2">Active</span>
             </div>
         </div>
-        <div v-else>
-            <p>Loading patient data...</p>
-        </div>
+    </div>
 
-        <div class="mt-4 ">
-            <!-- Generating Summary -->
-            <div class="card px-4" v-if="loadingSummary">
-                <div class="card-body">
-                    <p class="text-center text-muted md-paragraph mt-4">Generating Summary......</p>
-                </div>
-            </div>
-            <!-- Progress Summary -->
-            <div class="card px-4" v-else-if="!editMode && summaryGenerated">
-                <div class="d-flex justify-content-between align-items-center">
-                    <p class="mb-0 sub-heading">Progress Summary</p>
-                    <button v-if="!recordingMode" class="btn btn-link text-decoration-none" @click="enableEdit">
-                        <i class="bi bi-pencil"></i>
-                    </button>
-                    <button v-if="recordingMode" class="btn btn-link text-decoration-none">
-                        <i class="bi bi-mic"></i>
-                    </button>
-                </div>
-                <p>{{ summaryText }}</p>
-            </div>
-            <!-- Edit Summary -->
-            <div class="card px-4" v-if="editMode">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h6 class="mb-0">Edit Summary</h6>
-                    <button class="btn btn-save btn-sm mb-2 mt-2" @click="saveSummary">Save</button>
-                </div>
-                <textarea v-model="mergedText" rows="5" class="form-control mb-3" readonly></textarea>
-                <div class="d-flex mt-2 mb-2 gap-2">
-                    <button class="btn btn-cancel btn-sm " @click="cancelEdit">Cancel</button>
-                    <button v-if="recordingMode" class="btn btn-stop btn-sm " @click="stopRecording">
-                        Stop Recording
-                    </button>
+    <div class="row mt-2 ">
 
-                </div>
-
-            </div>
-
-
-
-            <!-- Buttons -->
-            <div v-if="!summaryGenerated && !editMode && !loadingSummary" class="d-flex mt-3">
-                <button class="btn btn-generate-summary me-3 w-15" @click="generateSummary">
-                    <i class="bi bi-file-earmark-text me-2"></i> Generate Summary
-                </button>
-                <button class="btn btn-record-summary w-15" @click="recordSummary">
-                    <i class="bi bi-mic me-2"></i> Record a Summary
-                </button>
-            </div>
-
-        </div>
-
-        
-
-        <div class="row mt-4 ">
-
-            <NursingTasksCard />
-        </div>
+        <NursingTasksCard />
 
 
     </div>
@@ -241,6 +210,22 @@ export default {
 
 
 <style scoped>
+.btn-next-vital {
+    background: #FF7F7F;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    max-width: 182px;
+}
+
+.btn-next-medication {
+    background: #F3E8FF;
+    color: #BA81E2;
+    border: none;
+    border-radius: 10px;
+    max-width: 182px;
+}
+
 .activ-badge {
     background: #73f85142;
     color: #297711 !important;
@@ -337,7 +322,8 @@ textarea.form-control {
 
     font-size: 10px;
 }
-.card{
+
+.card {
     border: none;
 }
 </style>

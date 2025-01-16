@@ -1,7 +1,6 @@
-<template>
-    <div class="card p-3">
-        <h6 class="fs-4 fw-bold mb-4">Vital Signs History</h6>
-        <div class="table-responsive custom-scrollbar px-3" style="max-height: 200px;">
+<template>   
+        <h6 class="fs-4 fw-bold mb-3">Vital Signs History</h6>
+        <div class="table-responsive custom-scrollbar " style="max-height: 200px; padding-right:10px">
             <table class="table  ">
                 <thead class="table-light">
                     <tr>
@@ -26,7 +25,7 @@
                     </tbody>
                
             </table>
-        </div>
+       
     </div>
 </template>
 
