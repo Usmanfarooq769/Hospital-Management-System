@@ -1,31 +1,31 @@
-<template>   
-        <h6 class="fs-4 fw-bold mb-3">Vital Signs History</h6>
-        <div class="table-responsive custom-scrollbar " style="max-height: 200px; padding-right:10px">
-            <table class="table  ">
-                <thead class="table-light">
-                    <tr>
-                        <th>Time</th>
-                        <th>BP</th>
-                        <th>HR</th>
-                        <th>Temperature</th>
-                        <th>SpO2</th>
-                        <th>RR</th>
-                    </tr>
-                </thead>
-            
-                    <tbody  >
-                        <tr v-for="record in history" :key="record.time">
-                            <td>{{ record.time }}</td>
-                            <td>{{ record.bp }}</td>
-                            <td>{{ record.hr }}</td>
-                            <td>{{ record.temperature }}</td>
-                            <td>{{ record.spo2 }}</td>
-                            <td>{{ record.rr }}</td>
-                        </tr>
-                    </tbody>
-               
-            </table>
-       
+<template>
+    <h6 class="fs-4 fw-bold mb-3">Vital Signs History</h6>
+    <div class="table-responsive custom-scrollbar " style="max-height: 200px; padding-right:10px">
+        <table class="table  ">
+            <thead class="table-light">
+                <tr>
+                    <th>Time</th>
+                    <th>BP</th>
+                    <th>HR</th>
+                    <th>Temperature</th>
+                    <th>SpO2</th>
+                    <th>RR</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr v-for="record in history" :key="record.time">
+                    <td>{{ record.time }}</td>
+                    <td>{{ record.bp }}</td>
+                    <td>{{ record.hr }}</td>
+                    <td>{{ record.temperature }}</td>
+                    <td>{{ record.spo2 }}</td>
+                    <td>{{ record.rr }}</td>
+                </tr>
+            </tbody>
+
+        </table>
+
     </div>
 </template>
 
@@ -56,8 +56,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 .table {
     margin-bottom: 0;
     font-size: 0.9rem;
@@ -68,8 +66,8 @@ td {
     text-align: center;
     vertical-align: middle;
 }
-.card{
+
+.card {
     border: none;
 }
-
 </style>
