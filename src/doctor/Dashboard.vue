@@ -34,7 +34,7 @@
                     <!-- Modal -->
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
+                        <div class="modal-dialog modal-md">
                             <div class="modal-content p-4">
                                 <div class="modal-header">
                                     <h6 class="modal-title  card-heading" id="staticBackdropLabel">
@@ -281,20 +281,22 @@ export default {
             patients: [
                 {
                     id: "123456",
-                    name: "James Wilson",
+                   
+                    name: "Tommy Chen",
                     status: "Active",
-                    department: "ED-Cardiology",
-                    image: require("@/assets/images/patient6.jpg"),
+                    department: "Pediatric ED",
+                    image: require("@/assets/images/tommy.png"),
+                    
                     workingSummary: "55yo male with acute chest pain, likely ACS. HTN, T2DM history. VS: BP 150/90, HR 98, RR 22, O2 94%. Active cardiac workup in progress.",
                     age: 55,
                     gender: "male",
                     mrn: "12345",
                     appointments:
                     {
-                        time: "08:30 am - 10:30 am",
-                        type: "General Checkup",
-                        doctor: "Dr. Carol D. Pollack-rundle",
-                        status: "success",
+                        time: "12/06/2024  10:30 am",
+                        type: "Pulmonologist Visit",
+                        doctor: "Dr.Michael Park",
+                        status: "success"
                     },
 
                     medicalReport: {
@@ -323,7 +325,7 @@ export default {
                     name: "Sarah Mitchell",
                     status: "Active",
                     department: "ED - OB/GYN",
-                    image: require("@/assets/images/patient2.jpg"),
+                    image: require("@/assets/images/sarah.png"),
                     workingSummary: "28yo female with ruptured ectopic pregnancy. Unstable VS: BP 90/60, HR 120. Surgical intervention required. 1L hemoperitoneum identified.",
                     age: 28,
                     gender: "femal",
@@ -358,9 +360,9 @@ export default {
                 },
                 {
                     id: "123458",
-                    name: "Tommy Chen",
+                    name: "James Wilson",
                     status: "Active",
-                    department: "Pediatric ED",
+                    department: "ED-Cardiology",
                     image: require("@/assets/images/patient.jpg"),
                     workingSummary: "7yo male with severe asthma exacerbation. O2 88%, marked respiratory distress. Known asthmatic, trigger: cat exposure. Non-compliant with controller medications.",
                     age: 7,
@@ -399,7 +401,7 @@ export default {
                     name: "Emily Anderson",
                     status: "Active",
                     department: "ED - Surgery",
-                    image: require("@/assets/images/patient1.jpg"),
+                    image: require("@/assets/images/Elearnor.png"),
                     workingSummary: "22yo female with acute appendicitis. RLQ pain, fever 100.9°F. Positive surgical signs. Confirmed on imaging. Scheduled for laparoscopic appendectomy.",
                     age: 22,
                     gender: "female",
@@ -437,7 +439,7 @@ export default {
                     name: "Michael Chen",
                     status: "Active",
                     department: "ENT",
-                    image: require("@/assets/images/patient5.jpg"),
+                    image: require("@/assets/images/micheal.png"),
                     workingSummary: "29yo male with right ear otomycosis following swimming. Failed antibiotic treatment. Presenting with itching, hearing loss, and characteristic fungal plug on examination.",
                     age: 29,
                     gender: "male",
@@ -475,7 +477,7 @@ export default {
                     name: "Eleanor Smith",
                     status: "Active",
                     department: "Ophthalmology",
-                    image: require("@/assets/images/patient3.png"),
+                    image: require("@/assets/images/Elearnor.png"),
                     workingSummary: "70yo female with sudden right eye vision loss, temporal headache, scalp tenderness. Giant cell arteritis suspected. Urgent steroid intervention required.",
                     age: 70,
                     gender: "female",
@@ -513,7 +515,7 @@ export default {
                     name: "David Rodriguez",
                     status: "Active",
                     department: "ENT",
-                    image: require("@/assets/images/patient5.jpg"),
+                    image: require("@/assets/images/david.png"),
                     workingSummary: "10yo child with chronic right ear discharge, new onset fever and mastoid tenderness. CSOM with mastoiditis requiring urgent intervention.",
                     age: 10,
                     gender: "male",
@@ -551,7 +553,7 @@ export default {
                     name: "Margaret Wilson",
                     status: "Active",
                     department: "GYN",
-                    image: require("@/assets/images/patient3.png"),
+                    image: require("@/assets/images/magrate.png"),
                     workingSummary: "65yo female with postmenopausal bleeding, T2DM, HTN, BMI 36.6. High-risk for endometrial cancer requiring urgent workup.",
                     age: 65,
                     gender: "female",

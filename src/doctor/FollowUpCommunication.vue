@@ -3,7 +3,7 @@
     <!-- Header -->
     <div class="d-flex justify-content-between align-items-center mb-3 mt-4">
       <p class="mb-0">
-        <strong>James Wilson</strong>, #12345, <strong>Dr. Sarah Thompson</strong>
+        <strong>{{ patientData.name }}</strong>, #12345, <strong>Dr. Sarah Thompson</strong>
       </p>
     </div>
 
@@ -13,7 +13,7 @@
         <div class="d-flex align-items-center">
           <img :src="patientData.image" alt="Profile" class="rounded-circle" style="width: 50px; height: 50px;" />
           <div class="px-3">
-            <p class="mb-0 md-paragraph">{{ patientData.name }}</p>
+            <p class="mb-0 fs-6 fw-semibold">{{ patientData.name }}</p>
             <small class="text-muted">
               ID: {{ patientData.id }} • {{ patientData.department }}
             </small>
@@ -126,14 +126,18 @@
 
     <div class="row mt-2 px-2 ">
 
-      <PendingItemsTable />
+      <PendingItemsTable
+        :pendingItems="patientData.pending_items"
+        :patientName="patientData.name"
+        @openModal="openModal"
+    />
     </div>
 
  
 </template>
 
 <script>
-import PendingItemsTable from "@/doctor/PendingItemsTable.vue";
+import PendingItemsTable from "@/components/PendingItemsTable.vue";
 export default {
   name: "FollowUpCommunication",
   components: {

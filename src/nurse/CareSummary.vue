@@ -64,21 +64,21 @@
                                 </div>
 
                                 <div class="card shadow-sm" style="border: 1px solid #00A0DA; background: transparent">
-                                <div class="card-body text-center">
+                                    <div class="card-body text-center">
 
-                                    <p class="fw-bold  text-color">Care Team </p>
-                                    <p class="mb-0 pb-0 fs-6">Dr Sara Thompson </p>
-                                    <small class="pt-0 mt-0 text-color">Primary Physician </small>
-                                    <p class="fs-6 mb-0 pb-0">Primary Physician </p>
-                                    <small class="mt-0 pt-0 text-color">Primary Nurse</small>
+                                        <p class="fw-bold  text-color">Care Team </p>
+                                        <p class="mb-0 pb-0 fs-6">Dr Sara Thompson </p>
+                                        <small class="pt-0 mt-0 text-color">Primary Physician </small>
+                                        <p class="fs-6 mb-0 pb-0">Primary Physician </p>
+                                        <small class="mt-0 pt-0 text-color">Primary Nurse</small>
+                                    </div>
+
                                 </div>
 
                             </div>
 
-                            </div>
 
 
-                            
                         </div>
                     </div>
 
@@ -123,6 +123,17 @@
                                     Care Plan
                                 </button>
                             </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link tab fs-5 fw-medium" id="handover-tab" data-bs-toggle="tab"
+                                    data-bs-target="#handover" type="button" role="tab" aria-controls="handover"
+                                    aria-selected="false">
+                                    Handover
+                                </button>
+                            </li>
+
+
+
                         </ul>
 
                         <div class="row mt-2">
@@ -157,6 +168,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="tab-pane fade" id="follow-up" role="tabpanel"
                                         aria-labelledby="follow-up-tab">
                                         <div class="card" style="background: #F8F8F8;">
@@ -167,14 +179,27 @@
                                         </div>
 
                                     </div>
+
+
+                                    <div class="tab-pane fade" id="handover" role="tabpanel"
+                                        aria-labelledby="handover-tab">
+                                        <div class="card" style="background: #F8F8F8;">
+                                            <div class="card-body">
+                                                 <HandoverTab :patient-data="patientData" /> 
+                                                 
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </div>
                             <div class="col-md-12 col-xl-3">
                                 <div class="row  mt-2 mt-xl-4  px-2 px-xl-0">
                                     <div class="card p-3  h-100" style="border: 1px solid #EBEBEB;">
-                                        
-                                            <CommonContent />
-                                        
+
+                                        <CommonContent />
+
                                     </div>
                                 </div>
 
@@ -203,7 +228,9 @@ import CareSummaryTab from "@/nurse/CareSummaryTab.vue";
 import VitalSignsTab from "@/nurse/VitalSignsTab.vue";
 import TreatmentTab from "@/nurse/TreatmentTab.vue";
 import CarePlan from "@/nurse/CarePlan.vue";
+import HandoverTab from "@/nurse/HandoverTab.vue";
 import CommonContent from "@/nurse/CommonContent.vue";
+ 
 
 export default {
     name: "CareSummary",
@@ -213,6 +240,7 @@ export default {
         VitalSignsTab,
         TreatmentTab,
         CarePlan,
+        HandoverTab,
         CommonContent,
     },
     data() {

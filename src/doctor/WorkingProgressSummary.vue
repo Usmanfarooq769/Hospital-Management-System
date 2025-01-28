@@ -3,7 +3,7 @@
     <!-- Header -->
     <div class="d-flex justify-content-between align-items-center mb-4 mt-4">
         <p class="mb-0">
-            <strong>James Wilson</strong>, #12345, <strong>Dr. Sarah Thompson</strong>
+            <strong>{{ patientData.name }} </strong>, #12345, <strong>Dr. Sarah Thompson</strong>
         </p>
     </div>
 
@@ -13,7 +13,7 @@
             <div class="d-flex align-items-center">
                 <img :src="patientData.image" alt="Profile" class="rounded-circle" style="width: 50px; height: 50px;" />
                 <div class="px-3">
-                    <p class="mb-0 md-paragraph">{{ patientData.name }}</p>
+                    <p class="mb-0 fs-6 fw-semibold">{{ patientData.name }}</p>
                     <small class="text-muted">
                         ID: {{ patientData.id }} • {{ patientData.department }}
                     </small>
@@ -27,103 +27,65 @@
     </div>
 
 
+
+
+    <!-- Buttons -->
     <div class="mt-4">
-        <!-- Generating Summary -->
-        <div class="card px-4" v-if="loadingSummary">
-            <div class="card-body">
-                <p class="text-center text-muted fw-bold mt-4">Generating Summary......</p>
-            </div>
-        </div>
-
-        <!-- Summary View Mode -->
-        <div class="card px-4" v-else-if="summaryViewMode">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-                <p class="mb-0 sub-heading">Progress Summary</p>
-                <div>
-                    <button class="btn btn-link text-decoration-none" @click="enableEdit">
-                        <i class="bi bi-pencil"></i>
-                    </button>
-                    <button class="btn btn-link text-decoration-none" @click="resetSummary">
-                        <i class="bi bi-trash"></i>
-                    </button>
-                </div>
-            </div>
-            <p class="mt-4 mb-3">{{ summaryText }}</p>
-        </div>
-
-        <!-- Edit Summary -->
-        <div class="card px-4" v-if="editMode">
-            <div class="d-flex justify-content-between align-items-center">
-                <h6 class="fw-bold mt-4 mb-3">Edit Summary</h6>
-                <button class="btn btn-save btn-sm mb-4 mt-3" @click="saveSummary">Save</button>
-            </div>
-            <!-- <textarea v-model="mergedText" rows="5" class="form-control mb-3" :readonly="recordingMode"></textarea> -->
-            <textarea v-model="mergedText" rows="5" class="form-control mb-3" :readonly="recordingMode"
-                ref="editTextarea"></textarea>
-
-            <div class="d-flex mt-3 mb-3 gap-2">
-                <button class="btn btn-cancel btn-sm" @click="cancelEdit">Cancel</button>
-                <button v-if="recordingMode" class="btn btn-stop btn-sm" @click="stopRecording">
-                    Stop Recording
-                </button>
-            </div>
-        </div>
-
-        <!-- Buttons -->
-        <div v-if="!summaryGenerated && !editMode && !loadingSummary" class="d-flex mt-3">
-            <button class="btn btn-generate-summary me-3 w-15" @click="generateSummary">
+        <div v-if="!generatingSummary && !recordingMode" class="d-flex mt-3">
+            <button class="btn btn-generate-summary me-3 w-15" @click="startGenerateSummary">
                 <i class="bi bi-file-earmark-text me-1"></i> Generate Summary
             </button>
-            <button class="btn btn-record-summary w-15" @click="recordSummary">
-                <i class="bi bi-mic me-1"></i> Record a Summary
+            <button class="btn btn-record-summary w-15" @click="toggleRecording">
+                <i class="bi bi-mic me-1"></i> {{ isRecording ? 'Stop Recording' : 'Start Recording' }}
             </button>
+        </div>
+    </div>
+
+    <!-- Summary Input Field (After Generating Summary) -->
+    <div v-if="generatingSummary" class="mt-3">
+        <textarea v-model="summaryText" rows="5" class="form-control mb-3"></textarea>
+        <div class="d-flex gap-2">
+            <button class="btn btn-primary btn-sm" @click="saveSummary">Save</button>
+            <button class="btn  btn-secondary btn-sm" @click="cancelSummary">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Recording Input Field (After Clicking "Record a Summary") -->
+    <div v-if="recordingMode" class="mt-3">
+        <textarea v-model="summaryText" rows="5" class="form-control mb-3"></textarea>
+        <div class="d-flex gap-2">
+            <button class="btn btn-danger btn-sm" @click="toggleRecording">
+                {{ isRecording ? 'Stop Recording' : 'Start Recording' }}
+            </button>
+            <button class="btn btn-primary btn-sm" @click="saveSummary">Save</button>
+            <button class="btn btn-secondary btn-sm" @click="cancelSummary">Cancel</button>
         </div>
     </div>
 
 
     <div class="row mt-4 px-2">
 
-        <div class="card p-4  mt-4">
+        <div class="card p-4 mt-4">
             <p class="mb-3 fs-4 fw-bold">Summary History</p>
             <div class="list-group px-2">
-                <div class="row mt-2">
-                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="row mt-2" v-for="(summary, index) in patientData.summary" :key="summary.id">
+                    <div class="list-group-item d-flex justify-content-between align-items-center"
+                        @click="toggleDetails(index)" style="cursor: pointer; background: #EEF6FF; border: none;">
                         <div>
-                            <p class="mb-0"><strong>Summary #101</strong> <span class="text-muted">(Cardiac
-                                    Evolution)</span></p>
-
-                        </div>
-                        <div class="div">
-                            <small class="text-muted">2024-12-22 14:30:00 | John Doe</small>
-                        </div>
-                        <i class="bi bi-chevron-right text-muted"></i>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="list-group-item d-flex justify-content-between align-items-center">
-                        <div>
-                            <p class="mb-0"><strong>Summary #102</strong> <span class="text-muted">(Follow up
-                                    Visit)</span>
+                            <p class="mb-0">
+                                <strong>Summary #{{ summary.id }}</strong>
+                                <span class="text-muted">({{ summary.title }})</span>
                             </p>
-
                         </div>
-                        <div class="div">
-                            <small class="text-muted">2024-12-22 14:30:00 | Dr. Sarah Smith</small>
-                        </div>
-                        <i class="bi bi-chevron-right text-muted"></i>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="list-group-item d-flex justify-content-between align-items-center">
                         <div>
-                            <p class="mb-0"><strong>Summary #103</strong> <span class="text-muted">(Diabetes's
-                                    management)</span></p>
+                            <small class="text-muted">{{ summary.date }} | {{ summary.doctor }}</small>
+                        </div>
+                        <i class="bi" :class="expandedIndex === index ? 'bi-chevron-down' : 'bi-chevron-right'"></i>
+                    </div>
 
-                        </div>
-                        <div class="div">
-                            <small class="text-muted">2024-12-22 14:30:00 | John Doe</small>
-                        </div>
-                        <i class="bi bi-chevron-right text-muted"></i>
+                    <!-- Dropdown details (toggle visibility) -->
+                    <div v-if="expandedIndex === index" class="p-3   rounded" style="background: #EEF6FF;">
+                        <p class="mb-0"><strong>Description:</strong> {{ summary.description }}</p>
                     </div>
                 </div>
             </div>
@@ -131,189 +93,448 @@
 
     </div>
 
+    <!-- Table for Pending Items -->
     <div class="row mt-2 px-2">
-
-        <PendingItemsTable />
+        <PendingItemsTable :pendingItems="patientData.pending_items" :patientName="patientData.name"
+            @openModal="openModal" />
     </div>
+
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="pendingItemModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="pendingItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-4 fw-bold" id="pendingItemModalLabel">Pending Item Details</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="fs-5"><strong>Type:</strong> {{ selectedItem?.type }}</p>
+                    <p class="fs-5"><strong>Description:</strong> {{ selectedItem?.description }}</p>
+                    <p class="fs-5"><strong>Requested by:</strong> {{ selectedItem?.requested_by }}</p>
+                    <p class="fs-5">
+                        <strong>Status:</strong>
+                        <span :class="statusClass(selectedItem?.status)">{{ selectedItem?.status }}</span>
+                    </p>
+                    <p class="fs-5"><strong>Due Date:</strong> {{ selectedItem?.due_date }}</p>
+
+                    <!-- Update Status Dropdown -->
+                    <div class="form-group">
+                        <label for="status" class="mb-2 fw-bold mt-3">Update Status:</label>
+                        <select v-model="updatedStatus" class="form-control" id="status">
+                            <option value="">Select status</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Urgent">Urgent</option>
+                        </select>
+                        <p v-if="errorMessage" class="error-message fw-semibold">{{ errorMessage }}</p>
+                    </div>
+
+                    <!-- Clinical Notes -->
+                    <div class="form-group">
+                        <label for="clinicalNotes" class="mb-2 fw-bold mt-3">Clinical Notes:</label>
+                        <textarea v-model="clinicalNotes" class="form-control" id="clinicalNotes"
+                            placeholder="Add your clinical notes..."></textarea>
+                    </div>
+
+                    <!-- Follow-up Instructions -->
+                    <div class="form-group">
+                        <label for="followUp" class="mb-2 fw-bold mt-3">Follow-up Instructions:</label>
+                        <textarea v-model="followUpInstructions" class="form-control" id="followUp"
+                            placeholder="Add follow-up instructions if needed..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm" @click="submitUpdate">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 
 
 </template>
 
 <script>
+import PendingItemsTable from "@/components/PendingItemsTable.vue";
 import Swal from "sweetalert2";
-import PendingItemsTable from "@/doctor/PendingItemsTable.vue";
+import { Modal } from "bootstrap";
 
 export default {
-    name: "WorkingProgressSummary",
     components: {
         PendingItemsTable,
     },
     props: {
         patientData: {
             type: Object,
-            default: () => ({}),
-        },
-    },
-    computed: {
-        summaryText: {
-            get() {
-                return this.patientData.workingSummary || "No working summary available.";
-            },
-            set(value) {
-                this.$emit("update-summary", value);
-            },
-        },
-
-        mergedText() {
-            return `${this.summaryText || ""} ${this.interimText}`.trim();
-        },
+            required: true
+        }
     },
     data() {
         return {
-            editMode: false, // Controls the edit input field
-            summaryViewMode: false, // Controls the modal where edit/delete buttons are shown
-            recordingMode: false,
-            summaryGenerated: false, // Indicates whether the summary has been generated
-            loadingSummary: false, // Controls the loading modal
-            recognition: null,
-            isRecording: false,
-            interimText: "", // Holds live speech-to-text results
+            selectedItem: null,
+            updatedStatus: "",
+            clinicalNotes: "",
+            followUpInstructions: "",
+            errorMessage: "",
+            expandedIndex: null, // Stores the index of the currently expanded summary
+            summaryText: "", // Stores the summary text
+            generatingSummary: false, // Controls "Generate Summary"
+            recordingMode: false, // Controls "Recording Summary"
+            recognition: null, // Speech Recognition Instance
+            isRecording: false, // Checks if recognition is running
         };
     },
     methods: {
-        generateSummary() {
-            this.resetSummary(); // Reset all states
-            this.loadingSummary = true;
-            setTimeout(() => {
-                this.loadingSummary = false; // Stop the loading modal
-                this.summaryGenerated = true;
-                this.summaryViewMode = true; // Open the modal with edit/delete buttons
-            }, 2000); // Simulate 2 seconds loading
+
+        startGenerateSummary() {
+            this.generatingSummary = true;
+            this.recordingMode = false; // Hide recording button
+            Swal.fire({
+                title: "Generating Summary...",
+                text: "Please wait while we generate the summary.",
+                icon: "info",
+                timer: 3000,
+                showConfirmButton: false,
+                didOpen: () => Swal.showLoading(),
+            }).then(() => {
+                this.summaryText = ""; // Clear text for user input
+            });
         },
 
-        enableEdit() {
-    this.summaryViewMode = false; // Close the edit/delete modal
-    this.editMode = true; // Open the edit input field
-
-    // Use ref to focus the input field when entering edit mode
-    this.$nextTick(() => {
-      const inputField = this.$refs.editTextarea;
-      if (inputField) inputField.focus();
-    });
-  },
-        recordSummary() {
-            this.resetSummary(); // Reset all states
-            this.loadingSummary = true;
-            setTimeout(() => {
-                this.loadingSummary = false;
-                this.summaryGenerated = true;
-                this.editMode = true; // Directly enable edit mode for recording
-                this.enableVoiceInput();
-            }, 2000); // Simulate 2 seconds loading
+        toggleRecording() {
+            if (this.isRecording) {
+                this.stopRecording();
+            } else {
+                this.startRecording();
+            }
         },
 
-        enableVoiceInput() {
-            this.editMode = true;
+        startRecording() {
             this.recordingMode = true;
-            if (!this.recognition) {
-                this.initializeSpeechRecognition();
-            }
-            this.recognition.start();
+            this.generatingSummary = false; // Hide generate button
             this.isRecording = true;
-        },
 
-        initializeSpeechRecognition() {
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (!SpeechRecognition) {
-                Swal.fire({
-                    title: "Error",
-                    text: "Speech recognition is not supported in this browser.",
-                    icon: "error",
-                    confirmButtonText: "OK",
-                });
-                return;
-            }
-            this.recognition = new SpeechRecognition();
-            this.recognition.continuous = true;
-            this.recognition.interimResults = true;
-
-            this.recognition.onresult = (event) => {
-                let finalTranscript = "";
-                let interimTranscript = "";
-
-                for (let i = event.resultIndex; i < event.results.length; i++) {
-                    if (event.results[i].isFinal) {
-                        finalTranscript += event.results[i][0].transcript + " ";
-                    } else {
-                        interimTranscript += event.results[i][0].transcript;
-                    }
+            Swal.fire({
+                title: "Recording Summary...",
+                text: "Start speaking, we are recording your summary.",
+                icon: "info",
+                timer: 3000,
+                showConfirmButton: false,
+                didOpen: () => Swal.showLoading(),
+            }).then(() => {
+                if (!("webkitSpeechRecognition" in window)) {
+                    Swal.fire("Error", "Speech Recognition is not supported in this browser.", "error");
+                    return;
                 }
 
-                // Append final transcript to summaryText
-                this.summaryText += finalTranscript.trim();
+                this.recognition = new window.webkitSpeechRecognition();
+                this.recognition.continuous = true; // Keep listening
+                this.recognition.interimResults = false; // Final results only
+                this.recognition.lang = "en-US";
 
-                // Update interimText for live display
-                this.interimText = interimTranscript.trim();
-            };
+                this.recognition.onresult = (event) => {
+                    let transcript = "";
+                    for (let i = event.resultIndex; i < event.results.length; i++) {
+                        transcript += event.results[i][0].transcript;
+                    }
 
-            this.recognition.onerror = (event) => {
-                console.error("Speech recognition error:", event.error);
-                this.stopRecording();
-            };
+                    this.summaryText += " " + transcript;
+                };
+
+                this.recognition.onend = () => {
+                    if (this.isRecording) {
+                        this.recognition.start(); // Restart if still recording
+                    }
+                };
+
+                this.recognition.start();
+            });
         },
 
         stopRecording() {
             if (this.recognition && this.isRecording) {
                 this.recognition.stop();
                 this.isRecording = false;
-                this.recordingMode = false;
-                this.interimText = "";
             }
         },
 
         saveSummary() {
-            this.editMode = false;
-            this.recordingMode = false;
-            this.stopRecording();
             Swal.fire({
                 title: "Success!",
-                text: "Summary has been saved to patient’s EHR.",
+                text: "Summary saved successfully!",
                 icon: "success",
                 confirmButtonText: "OK",
             }).then(() => {
-                this.summaryGenerated = false;
-                this.summaryViewMode = false;
+                this.resetUI();
             });
         },
 
-        cancelEdit() {
-            this.editMode = false;
-            if (this.recordingMode) {
-                this.recordingMode = false;
-                this.summaryGenerated = false;
-                this.interimText = "";
-            }
-            this.stopRecording();
-            this.summaryViewMode = true; // Go back to edit/delete modal
+        cancelSummary() {
+            this.resetUI();
         },
 
-        resetSummary() {
-            // Reset all states and return to initial view
-            this.editMode = false;
+        resetUI() {
+            this.generatingSummary = false;
             this.recordingMode = false;
-            this.summaryGenerated = false;
-            this.loadingSummary = false;
-            this.summaryViewMode = false;
-            this.interimText = "";
-            this.$emit("update-summary", ""); // Clear the summary
+            this.isRecording = false;
+            if (this.recognition) {
+                this.recognition.stop();
+                this.recognition = null;
+            }
+        },
+
+
+
+        toggleDetails(index) {
+            // If the same index is clicked again, collapse it
+            if (this.expandedIndex === index) {
+                this.expandedIndex = null;
+            } else {
+                this.expandedIndex = index; // Expand the clicked item
+            }
+        },
+        openModal(item) {
+            // Hide any existing open modals
+            const existingModal = document.getElementById("pendingItemModal");
+            if (existingModal) {
+                const modalInstance = Modal.getInstance(existingModal) || new Modal(existingModal);
+                modalInstance.hide();
+            }
+
+            // Update selectedItem data before showing modal
+            this.selectedItem = item;
+            this.updatedStatus = item.status; // Pre-fill status
+            this.clinicalNotes = "";
+            this.followUpInstructions = "";
+            this.errorMessage = "";
+
+            // Open Bootstrap modal
+            this.$nextTick(() => {
+                const modalElement = document.getElementById("pendingItemModal");
+                const modalInstance = new Modal(modalElement);
+                modalInstance.show();
+            });
+        },
+        statusClass(status) {
+            switch (status?.toLowerCase()) {
+                case "urgent":
+                    return "badge-urgent";
+                case "pending":
+                    return "badge-pending";
+                case "completed":
+                    return "badge-completed";
+                case "in progress":
+                    return "badge-in-progress";
+                default:
+                    return "badge-default";
+            }
+        },
+        submitUpdate() {
+            if (!this.updatedStatus) {
+                this.errorMessage = "Please select a status before submitting.";
+                return;
+            }
+
+            this.errorMessage = "";
+
+            Swal.fire({
+                title: "Success!",
+                text: `Status updated to ${this.updatedStatus} successfully!`,
+                icon: "success",
+                confirmButtonText: "OK",
+            }).then(() => {
+                this.selectedItem.status = this.updatedStatus;
+                this.selectedItem.notes = this.clinicalNotes;
+                this.selectedItem.followUp = this.followUpInstructions;
+
+                // Close Bootstrap Modal
+                const modalElement = document.getElementById("pendingItemModal");
+                if (modalElement) {
+                    const modalInstance = Modal.getInstance(modalElement) || new Modal(modalElement);
+                    modalInstance.hide();
+                }
+            });
         },
     },
+
+
 };
 </script>
 
 
 
 <style scoped>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+textarea {
+    width: 100%;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+
+
+/* Custom Badges */
+.badge-urgent {
+    background: #FF26261A;
+    color: #FF2626;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.badge-pending {
+    background-color: #FFAC261A;
+    color: #FFAC26;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.badge-completed {
+    background-color: #d4edda;
+    color: #155724;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.badge-in-progress {
+    background-color: #cce5ff;
+    color: #004085;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Edit & Delete Icons */
+.edit-icon {
+    color: #007bff;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.edit-icon:hover {
+    color: #0056b3;
+}
+
+.delete-icon {
+    color: #dc3545;
+
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.delete-icon:hover {
+    color: #a71d2a;
+}
+
+
+
+
+
+.custom-badge.urgent {
+    background: #FF26261A;
+    color: #FF2626;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.custom-badge.pending {
+    background-color: #FFAC261A;
+    color: #FFAC26;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.custom-badge.completed {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.custom-badge.in-progress {
+    background-color: #cce5ff;
+    color: #004085;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.custom-badge.default {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.list-group-item {
+    transition: background 0.3s ease;
+}
+
+.list-group-item:hover {
+    background: #f8f9fa;
+}
+
+
 .activ-badge {
     background: #73f85142;
     color: #297711 !important;

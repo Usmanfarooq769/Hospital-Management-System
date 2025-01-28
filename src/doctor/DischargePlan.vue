@@ -1,20 +1,18 @@
 
 <template>
    
-
-
    <div class="d-flex justify-content-between align-items-center mb-4 mt-4">
         <p class="mb-0">
-            <strong>James Wilson</strong>, #12345, <strong>Dr. Sarah Thompson</strong>
+            <strong> {{ patientData.name }} </strong>, #12345, <strong>Dr. Sarah Thompson</strong>
         </p>
     </div>
             <div class="mb-mt-4">
                 <div class="d-flex align-item-center ">
 
-                    <button class="btn btn-report me-1 ">
+                    <button class="btn btn-report me-1 "   @click="generateDischargePlan">
                         <i class="bi bi-file-earmark-text me-1"></i>Generate Discharge Plan
                     </button>
-                    <button class="btn btn-group me-1">
+                    <button class="btn btn-group me-1"  @click="saveToPatientRecord">
                         <i class="bi bi-printer me-1"></i> Save to Patient Record
                     </button>
                    
@@ -105,26 +103,143 @@
 
             <div class="row mt-2 px-2 ">
 
-                <PendingItemsTable />
+                <PendingItemsTable
+        :pendingItems="patientData.pending_items"
+        :patientName="patientData.name"
+        @openModal="openModal"
+    />
             </div>
+
+
+           <!-- Print Content -->
+    <!-- ✅ Print Content (Hidden) ✅ -->
+    <div id="print-content" style="display: none;">
+        <h2>Discharge Plan</h2>
+
+        <div class="card">
+            <h3>Discharge Instructions</h3>
+            <ul>
+                <li v-for="(instruction, index) in dischargePlan.dischargeInstructions" :key="index">
+                    {{ instruction }}
+                </li>
+            </ul>
+
+            <h3>Medications</h3>
+            <ul>
+                <li v-for="(medication, index) in dischargePlan.medication" :key="index">
+                    {{ medication }}
+                </li>
+            </ul>
+            <h3>Lifestyle Modifications</h3>
+            <ul>
+                <li v-for="(modification, index) in dischargePlan.lifestyleModification" :key="index">
+                    {{ modification }}
+                </li>
+            </ul>
+            <h3>Follow-Up</h3>
+            <ul>
+                <li v-for="(followUp, index) in dischargePlan.followUp" :key="index">
+                    {{ followUp }}
+                </li>
+            </ul>
+        </div>
+        
+       
+    </div>
 
 
 
 </template>
 
 <script>
-import PendingItemsTable from "@/doctor/PendingItemsTable.vue";
+import PendingItemsTable from "@/components/PendingItemsTable.vue";
+import Swal from "sweetalert2";
+
+
 export default {
     name: "DischargePlan",
+    
     props: {
-        dischargePlan: {
+          dischargePlan: {
             type: Object,
             required: true,
         },
+        patientData: {
+      type: Object,
+      required: true,
+      default: () => ({}),
+    },
+    computed: {
+    isDataAvailable() {
+      return Object.keys(this.patientData).length > 0;
+    },
+  },
+
     },
     components: {
         PendingItemsTable,
-    }
+    },
+    methods: {
+        // ✅ Save to Patient Record - Show Success SweetAlert
+        saveToPatientRecord() {
+            Swal.fire({
+                title: "Success!",
+                text: "Discharge plan saved to patient record successfully!",
+                icon: "success",
+                confirmButtonText: "OK",
+            });
+        },
+
+        //  Generate Discharge Plan - Show SweetAlert, then Print
+        generateDischargePlan() {
+            Swal.fire({
+                title: "Generating Discharge Plan...",
+                text: "Please wait while we prepare the discharge plan.",
+                icon: "info",
+                timer: 3000,
+                showConfirmButton: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+            }).then(() => {
+                this.$nextTick(() => {
+                    this.printDischargePlan();
+                });
+            });
+        },
+
+        //  Print Discharge Plan (Now working perfectly!)
+        printDischargePlan() {
+            const content = document.getElementById("print-content").innerHTML;
+            const printWindow = window.open("", "_blank");
+
+            if (!printWindow) {
+                console.error("Failed to open print window.");
+                return;
+            }
+
+            printWindow.document.open();
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title>Discharge Plan</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; padding: 20px; }
+                        .card { border: none; padding: 15px; margin-bottom: 15px; }
+                        h3 { color: #4588E0; }
+                        ul { margin: 5px 0; padding-left: 20px; }
+                    </style>
+                </head>
+                <body>
+                    ${content}
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        },
+    },
+
 };
 </script>
 

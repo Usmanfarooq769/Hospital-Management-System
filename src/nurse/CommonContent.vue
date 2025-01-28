@@ -105,9 +105,10 @@
 
 
 <script>
-import HeartRateChart from "@/doctor/LineChart.vue";
+import HeartRateChart from "@/nurse/LineChart.vue";
 
 export default {
+    name: " CommonContent",
     components: {
         HeartRateChart,
     },
