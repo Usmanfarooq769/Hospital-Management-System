@@ -180,7 +180,7 @@ export default {
         PendingItemsTable,
     },
     methods: {
-        // ✅ Save to Patient Record - Show Success SweetAlert
+        // Save to Patient Record - Show Success SweetAlert
         saveToPatientRecord() {
             Swal.fire({
                 title: "Success!",
@@ -196,7 +196,7 @@ export default {
                 title: "Generating Discharge Plan...",
                 text: "Please wait while we prepare the discharge plan.",
                 icon: "info",
-                timer: 3000,
+                timer: 1000,
                 showConfirmButton: false,
                 didOpen: () => {
                     Swal.showLoading();
@@ -226,7 +226,7 @@ export default {
                     <style>
                         body { font-family: Arial, sans-serif; padding: 20px; }
                         .card { border: none; padding: 15px; margin-bottom: 15px; }
-                        h3 { color: #4588E0; }
+                       
                         ul { margin: 5px 0; padding-left: 20px; }
                     </style>
                 </head>

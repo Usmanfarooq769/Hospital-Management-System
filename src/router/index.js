@@ -4,6 +4,7 @@ import RegisterPage from "@/pages/Register.vue";
 import VerifyOTPPage from "@/pages/VerifyOTP.vue";
 
 import DoctorDashboard from "@/doctor/Dashboard.vue";
+import doctorlogin from "@/pages/DoctorLogin.vue";
 import PatientDetails from "@/doctor/PatientDetails.vue";
 import NurseDashboard from "@/nurse/Dashboard.vue";
 import CareSummary from "@/nurse/CareSummary.vue";
@@ -26,6 +27,12 @@ const routes = [
     path: "/doctor",
     name: "DoctorDashboarde",
     component: DoctorDashboard,
+  },
+  {
+    path: "/login",
+    name: "doctorlogin",
+    component: doctorlogin,
+    meta: { hideHeader: true }, 
   },
   {
     path: "/Patient/:id",

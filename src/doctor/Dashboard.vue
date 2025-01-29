@@ -401,7 +401,7 @@ export default {
                     name: "Emily Anderson",
                     status: "Active",
                     department: "ED - Surgery",
-                    image: require("@/assets/images/Elearnor.png"),
+                    image: require("@/assets/images/Ander.png"),
                     workingSummary: "22yo female with acute appendicitis. RLQ pain, fever 100.9°F. Positive surgical signs. Confirmed on imaging. Scheduled for laparoscopic appendectomy.",
                     age: 22,
                     gender: "female",

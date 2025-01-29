@@ -155,6 +155,29 @@
 
 
 
+    <div id="report-content " style="display: none;">
+            <div class="h-100 m-auto">
+                <div class="row g-2 mt-4">
+                    
+                    <div class="col-md-4">
+                        <div class="card p-3 h-100"  style="border: none;">
+                            <p class="fw-bold" style="color:#4588E0;">
+                                <i class="bi bi-file-earmark-text me-1"></i> Progress Summary
+                            </p>
+                        
+                            <p class="fs-6 fw-semibold"> {{ patientData. workingSummary }}</p>
+                           
+                            
+                        </div>
+                    </div>
+
+ 
+                </div>
+            </div>
+        </div>
+
+
+
 
 
 
@@ -164,6 +187,7 @@
 <script>
 import PendingItemsTable from "@/components/PendingItemsTable.vue";
 import Swal from "sweetalert2";
+
 import { Modal } from "bootstrap";
 
 export default {
@@ -182,6 +206,7 @@ export default {
             updatedStatus: "",
             clinicalNotes: "",
             followUpInstructions: "",
+            
             errorMessage: "",
             expandedIndex: null, // Stores the index of the currently expanded summary
             summaryText: "", // Stores the summary text
@@ -194,19 +219,63 @@ export default {
     methods: {
 
         startGenerateSummary() {
-            this.generatingSummary = true;
-            this.recordingMode = false; // Hide recording button
             Swal.fire({
-                title: "Generating Summary...",
-                text: "Please wait while we generate the summary.",
+                title: "Generating Report...",
+                text: "Please wait while the report is being generated.",
                 icon: "info",
-                timer: 3000,
+                timer: 1000,
                 showConfirmButton: false,
-                didOpen: () => Swal.showLoading(),
+                didOpen: () => {
+                    Swal.showLoading();
+                },
             }).then(() => {
-                this.summaryText = ""; // Clear text for user input
+                this.$nextTick(() => {
+                    this. reportprint();
+                });
             });
         },
+
+
+
+        
+        reportprint() {
+    const content = `
+        <html>
+        <head>
+            <title>Medical Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; padding: 20px; }
+                .card { border: 1px solid #EBEBEB; padding: 15px; margin-bottom: 15px; }
+                p { font-size: 14px; }
+                ul { margin: 5px 0; padding-left: 20px; }
+            </style>
+        </head>
+        <body>
+            <h2>Progress Summary</h2>
+            
+           
+            <div class="card " style="border:none;">
+                
+               
+                <p class="fs-5">${this.patientData. workingSummary }</p>
+                
+                 
+            </div>
+
+        </body>
+        </html>
+    `;
+
+    const printWindow = window.open("", "_blank");
+    printWindow.document.open();
+    printWindow.document.write(content);
+    printWindow.document.close();
+    printWindow.print();
+},
+
+
+
+       
 
         toggleRecording() {
             if (this.isRecording) {
@@ -225,7 +294,7 @@ export default {
                 title: "Recording Summary...",
                 text: "Start speaking, we are recording your summary.",
                 icon: "info",
-                timer: 3000,
+                timer: 1000,
                 showConfirmButton: false,
                 didOpen: () => Swal.showLoading(),
             }).then(() => {

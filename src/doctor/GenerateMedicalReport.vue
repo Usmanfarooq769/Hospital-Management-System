@@ -227,7 +227,7 @@
 
  
 
-     
+       
 
 
 
@@ -271,7 +271,7 @@ export default {
                 allowOutsideClick: false,
                 allowEscapeKey: false,
                 showConfirmButton: false,
-                timer: 3000, // 5 seconds
+                timer: 1000, // 5 seconds
                 didOpen: () => {
                     Swal.showLoading(); // Show loading animation
                 },
@@ -285,7 +285,7 @@ export default {
                     icon: "success",
                     confirmButtonText: "OK",
                 });
-            }, 3000);
+            }, 2000);
         },
         async confirmPrint() {
             Swal.fire({
@@ -307,18 +307,65 @@ export default {
                 title: "Generating Report...",
                 text: "Please wait while the report is being generated.",
                 icon: "info",
-                timer: 3000,
+                timer: 2000,
                 showConfirmButton: false,
                 didOpen: () => {
                     Swal.showLoading();
                 },
             }).then(() => {
                 this.$nextTick(() => {
-                    this.printReport();
+                    this. reportprint();
                 });
             });
         },
        
+
+
+
+        reportprint() {
+    const content = `
+        <html>
+        <head>
+            <title>Medical Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; padding: 20px; }
+                .card { border: 1px solid #EBEBEB; padding: 15px; margin-bottom: 15px; }
+                p { font-size: 14px; }
+                ul { margin: 5px 0; padding-left: 20px; }
+            </style>
+        </head>
+        <body>
+            <h2>Medical Report</h2>
+            
+           
+            <div class="card" style="border:none;">
+                
+                <p><strong>Name:</strong> ${this.patientData.name}</p>
+                <p><strong>DOB:</strong> ${this.patientData.medicalReport.patientInformation.dob}</p>
+                <p><strong>DOB:</strong> ${this.patientData.medicalReport.patientInformation.dob}</p>
+                <p><strong>MRN:</strong> ${this.patientData.mrn}</p>
+                <p><strong>Primary Physician:</strong> ${this.patientData.medicalReport.patientInformation.contact}</p>
+                  
+                 
+            </div>
+
+        </body>
+        </html>
+    `;
+
+    const printWindow = window.open("", "_blank");
+    printWindow.document.open();
+    printWindow.document.write(content);
+    printWindow.document.close();
+    printWindow.print();
+},
+
+
+
+
+
+
+
 
 
         // Print only the report content

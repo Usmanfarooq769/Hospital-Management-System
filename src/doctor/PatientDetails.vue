@@ -193,12 +193,11 @@ export default {
             patients: [
                 {
                     id: "123456",
-                    name: "Tommy Cher",
+                    name: "Tommy Chen",
                     status: "Active",
                     department: "ED-Cardiology",
                     image: require("@/assets/images/tommy.png"),
-                    workingSummary: "55yo male with acute chest pain, likely ACS. HTN, T2DM history. VS: BP 150/90, HR 98, RR 22, O2 94%. Active cardiac workup in progress.",
-                    age: 7,
+                    workingSummary: "7yo male with Type 1 Diabetes. HbA1c 7.2% (improved from 7.8%). Blood glucose readings 80-150 mg/dL. Good compliance with insulin regimen. Continue current management plan.",
                     gender: "Male",
                     mrn: "45678",
 
@@ -261,22 +260,10 @@ export default {
                         "Non-compliant with controller medications"
                     ],
                     summary: [
-                        {
-                            id: "101",
-                            title: "Cardiac Evolution",
-                            date: "2024-12-22 09:15:00",
-                            doctor: "Dr. John Reynolds",
-                            description: "10yo male with history of cardiac murmur. Heart rate 98bpm, regular rhythm. No chest pain or dyspnea. Echo shows mild mitral regurgitation. Cleared for physical activity with monitoring."
-                        },
+                       
+                        
                         {
                             "id": "102",
-                            "title": "Follow up Visit",
-                            "date": "2024-12-22 13:45:00",
-                            "doctor": "Dr. Sarah Thompson",
-                            "description": "7yo male presents for routine follow-up. Asthma well-controlled on current regimen. No nighttime symptoms. Peak flow 150 L/min (80% predicted). Continue current medications, follow up in 3 months."
-                        },
-                        {
-                            "id": "103",
                             "title": "Diabetes's Management",
                             "date": "2024-12-22 16:20:00",
                             "doctor": "Dr. James Wilson",
@@ -308,7 +295,7 @@ export default {
                     ],
                     medicalReport: {
                         patientInformation: {
-                            dob: "04/15/1968",
+                            dob: "12/15/2017",
                             primaryPhysician: "Dr. Sarah Thompson",
                             contact: "(555) 123-4567",
                         },
@@ -439,9 +426,6 @@ export default {
                             due_date: "2024-12-22 16:00:00"
                         }
                     ],
-
-
-
                     summary: [
                         {
                             id: "1",
@@ -616,7 +600,7 @@ export default {
                     status: "Active",
                     department: "Pediatric ED",
                     image: require("@/assets/images/patient.jpg"),
-                    workingSummary: "7yo male with severe asthma exacerbation. O2 88%, marked respiratory distress. Known asthmatic, trigger: cat exposure. Non-compliant with controller medications.",
+                    workingSummary: "26yo male presents with acute chest pain. Initial ECG shows ST elevation in V2-V4. Troponin elevated at 2.3 ng/mL. Started on antiplatelet therapy. Cardiac cath lab activated.",
                     age: 26,
                     gender: "male",
                     mrn: "45678",
@@ -669,7 +653,7 @@ export default {
                             title: "Summary #1",
                             date: "2024-12-22 09:15:00",
                             doctor: "Dr. Sarah Thompson",
-                            description: "55yo male presents with acute chest pain. Initial ECG shows ST elevation in V2-V4. Troponin elevated at 2.3 ng/mL. Started on antiplatelet therapy. Cardiac cath lab activated."
+                            description: "26yo male presents with acute chest pain. Initial ECG shows ST elevation in V2-V4. Troponin elevated at 2.3 ng/mL. Started on antiplatelet therapy. Cardiac cath lab activated."
                         },
                         {
                             id: "2",
@@ -707,7 +691,7 @@ export default {
                     ],
                     medicalReport: {
                         patientInformation: {
-                            dob: "03/12/2016",
+                            dob: "03/5/1998",
                             primaryPhysician: "Dr. Michael Park",
                             contact: "Parents - (555) 345-6789",
                         },
@@ -840,7 +824,7 @@ export default {
                     name: "Emily Anderson",
                     status: "Active",
                     department: "ED - Surgery",
-                    image: require("@/assets/images/patient1.jpg"),
+                    image: require("@/assets/images/Ander.png"),
                     workingSummary: "22yo female with acute appendicitis. RLQ pain, fever 100.9°F. Positive surgical signs. Confirmed on imaging. Scheduled for laparoscopic appendectomy.",
                     age: 22,
                     gender: "female",
@@ -917,7 +901,7 @@ export default {
                     ],
                     medicalReport: {
                         patientInformation: {
-                            dob: "05/30/2001",
+                            dob: "09/30/2002",
                             primaryPhysician: "Dr. James Rodriguez",
                             contact: "(555) 456-7890",
                         },
@@ -1100,7 +1084,7 @@ export default {
                     ],
                     medicalReport: {
                         patientInformation: {
-                            dob: "02/01/1994",
+                            dob: "02/01/1996",
                             contact: "(555) 567-1234",
                         },
                         medicalHistory: {
@@ -1599,7 +1583,7 @@ export default {
                     department: "GYN",
                     image: require("@/assets/images/magrate.png"),
                     workingSummary: "65yo female with postmenopausal bleeding, T2DM, HTN, BMI 36.6. High-risk for endometrial cancer requiring urgent workup.",
-                    age: 72,
+                    age: 65,
                     gender: "female",
                     mrn: "78643",
                     physician_alerts: [

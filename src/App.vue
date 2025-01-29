@@ -219,10 +219,10 @@ a:hover {
 
 
 
-html {
+/* html {
   height: 100%;
   overflow-y: scroll;
-}
+} */
 
 
 
