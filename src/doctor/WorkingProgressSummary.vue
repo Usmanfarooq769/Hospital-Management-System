@@ -43,7 +43,7 @@
 
     <!-- Summary Input Field (After Generating Summary) -->
     <div v-if="generatingSummary" class="mt-3">
-        <textarea v-model="summaryText" rows="5" class="form-control mb-3"></textarea>
+        <textarea v-model="workingSummary" rows="5" class="form-control mb-3"></textarea>
         <div class="d-flex gap-2">
             <button class="btn btn-primary btn-sm" @click="saveSummary">Save</button>
             <button class="btn  btn-secondary btn-sm" @click="cancelSummary">Cancel</button>
@@ -154,34 +154,6 @@
     </div>
 
 
-
-    <div id="report-content " style="display: none;">
-            <div class="h-100 m-auto">
-                <div class="row g-2 mt-4">
-                    
-                    <div class="col-md-4">
-                        <div class="card p-3 h-100"  style="border: none;">
-                            <p class="fw-bold" style="color:#4588E0;">
-                                <i class="bi bi-file-earmark-text me-1"></i> Progress Summary
-                            </p>
-                        
-                            <p class="fs-6 fw-semibold"> {{ patientData. workingSummary }}</p>
-                           
-                            
-                        </div>
-                    </div>
-
- 
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
-
 </template>
 
 <script>
@@ -206,76 +178,42 @@ export default {
             updatedStatus: "",
             clinicalNotes: "",
             followUpInstructions: "",
-            
+            workingSummary: this.patientData.workingSummary,
             errorMessage: "",
             expandedIndex: null, // Stores the index of the currently expanded summary
-            summaryText: "", // Stores the summary text
+            summaryText: this.patientData.workingSummary, // Stores the summary text
             generatingSummary: false, // Controls "Generate Summary"
             recordingMode: false, // Controls "Recording Summary"
             recognition: null, // Speech Recognition Instance
             isRecording: false, // Checks if recognition is running
+           
         };
+
+       
     },
+
+    watch: {
+    // Watch for changes in patientData and update the local workingSummary if necessary
+    'patientData.workingSummary'(newValue) {
+      this.workingSummary = newValue;
+    },
+},
     methods: {
 
         startGenerateSummary() {
+            this.generatingSummary = true;
+            this.recordingMode = false; // Hide recording button
             Swal.fire({
-                title: "Generating Report...",
-                text: "Please wait while the report is being generated.",
+                title: "Generating Summary...",
+                text: "Please wait while we generate the summary.",
                 icon: "info",
-                timer: 1000,
+                timer: 3000,
                 showConfirmButton: false,
-                didOpen: () => {
-                    Swal.showLoading();
-                },
+                didOpen: () => Swal.showLoading(),
             }).then(() => {
-                this.$nextTick(() => {
-                    this. reportprint();
-                });
+                this.summaryText = ""; // Clear text for user input
             });
         },
-
-
-
-        
-        reportprint() {
-    const content = `
-        <html>
-        <head>
-            <title>Medical Report</title>
-            <style>
-                body { font-family: Arial, sans-serif; padding: 20px; }
-                .card { border: 1px solid #EBEBEB; padding: 15px; margin-bottom: 15px; }
-                p { font-size: 14px; }
-                ul { margin: 5px 0; padding-left: 20px; }
-            </style>
-        </head>
-        <body>
-            <h2>Progress Summary</h2>
-            
-           
-            <div class="card " style="border:none;">
-                
-               
-                <p class="fs-5">${this.patientData. workingSummary }</p>
-                
-                 
-            </div>
-
-        </body>
-        </html>
-    `;
-
-    const printWindow = window.open("", "_blank");
-    printWindow.document.open();
-    printWindow.document.write(content);
-    printWindow.document.close();
-    printWindow.print();
-},
-
-
-
-       
 
         toggleRecording() {
             if (this.isRecording) {
@@ -440,26 +378,6 @@ export default {
 
 
 <style scoped>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 textarea {
     width: 100%;
@@ -705,3 +623,15 @@ textarea.form-control {
     border: 1px solid #EBEBEB;
 }
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
