@@ -3,7 +3,7 @@
   <!-- Header -->
   <div class="d-flex justify-content-between align-items-center  mt-2">
     <p class="mb-0">
-      <strong>James Wilson</strong>, #12345, <strong>Dr. Sarah Thompson</strong>
+      <strong>{{ patientData.name }}</strong>, #{{ patientData.id }} <strong>Dr. Sarah Thompson</strong>
     </p>
   </div>
 
@@ -23,8 +23,8 @@
           <p class="fw-bold">Sample Collection</p>
           <button class="nav-link active nav-btn btn-sm" id="sample-tab" data-bs-toggle="tab" data-bs-target="#sample"
             type="button" role="tab" aria-controls="sample" :aria-selected="activeTab === 'sample'"
-            @click="setActiveTab('sample')">
-            View Details
+            @click="setActiveTab('sample')" style="font-size: 14px;">
+            Collection Details
           </button>
         </div>
       </div>
@@ -38,8 +38,8 @@
           <p class="fw-bold">Supportive Procedures</p>
           <button class="nav-link btn-sm nav-btn" id="supportive-tab" data-bs-toggle="tab" data-bs-target="#supportive"
             type="button" role="tab" aria-controls="supportive" :aria-selected="activeTab === 'supportive'"
-            @click="setActiveTab('supportive')">
-            View Procedures
+            @click="setActiveTab('supportive')"  style="font-size: 14px;">
+            Procedures Details
           </button>
         </div>
       </div>
@@ -53,8 +53,8 @@
           <p class="fw-bold">Patient Education</p>
           <button class="nav-link btn-sm nav-btn" id="education-tab" data-bs-toggle="tab" data-bs-target="#education"
             type="button" role="tab" aria-controls="education" :aria-selected="activeTab === 'education'"
-            @click="setActiveTab('education')">
-            View Education Details
+            @click="setActiveTab('education')"  style="font-size: 14px;">
+            Education Details
           </button>
         </div>
       </div>

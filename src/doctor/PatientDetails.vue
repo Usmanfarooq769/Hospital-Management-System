@@ -4,7 +4,7 @@
 
         <div class="row g-2 pb-4">
 
-            <div class="col-12 col-lg-3 col-xl-2">
+            <div class="col-12 col-lg-4 col-xl-2">
 
                 <div class="card  patient-card mb-0 pb-0 w-100 h-100 custom-space">
                     <div class="card-body">
@@ -75,7 +75,7 @@
 
             </div>
 
-            <div class="col-12 col-lg-9 col-xl-10">
+            <div class="col-12 col-lg-8 col-xl-10">
                 <div class="card  h-100  custom-space">
                     <div class="card-body">
 
@@ -113,7 +113,7 @@
 
 
                         <div class="row   mt-2">
-                            <div class="col-md-12 col-xl-8 ">
+                            <div class="col-md-12 col-xl-8">
                                 <div class="row mt-4">
                                     <div class="card" style="background: #F8F8F8; border: none;">
 

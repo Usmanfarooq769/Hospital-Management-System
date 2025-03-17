@@ -30,7 +30,7 @@
                             </div>
                         </div>
                         <!-- Card 2 -->
-                        <div class="card mt-2" >
+                        <div class="card mt-2">
                             <div class="card-body d-flex align-item-center justify-content-between">
                                 <div class="div">
                                     <p class="fw-bold mb-0 pb-0">
@@ -169,7 +169,8 @@
                                     <div class="d-flex align-items-center justify-content-between mb-0 pb-0">
                                         <div class="div">
                                             <p class="mb-0 fw-bold">{{ patient.name }}</p>
-                                            <small class="mb-0 text-muted"><strong class="md-paragraph">Room: {{ patient.room
+                                            <small class="mb-0 text-muted"><strong class="md-paragraph">Room: {{
+                                                patient.room
                                                     }}</strong></small>
                                         </div>
                                         <div class="div text-center">
@@ -228,12 +229,22 @@
                                     <div class="col-md-6 col-xl-12">
                                         <!-- Notifications -->
                                         <p class="custom-text mb-3  mt-3 fw-bold">Notifications</p>
-                                        <div class=" notification-red">
+                                        <button class="btn notification-red w-100 btn-light">
                                             Reports
-                                        </div>
-                                        <div class=" notification-yellow mt-2">
+                                        </button>
+                                        <button class=" btn btn-light notification-yellow mt-2 w-100">
                                             Reports
+                                        </button>
+
+                                        <div class="d-flex align-items-center gap-2 mt-2">
+
+                                            <button class="btn notification-red w-100 btn-light " data-bs-toggle="modal"
+                                                data-bs-target="#warningModal">
+                                                <i class="bi bi-exclamation-triangle-fill text-danger"></i> Early
+                                                warnings
+                                            </button>
                                         </div>
+
                                     </div>
 
                                 </div>
@@ -249,17 +260,147 @@
 
         </div>
     </div>
+    <!------warning modal----->
+
+    <div class="modal fade custom-modal" id="warningModal" tabindex="-1" aria-labelledby="warningModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title fs-4 fw-bold " id="warningModalLabel" style="color: red;">
+                        <i class="bi bi-exclamation-triangle-fill text-danger"></i>
+                        Early Warnings
+                    </p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert-box">
+                        <div class="patient-card p-3 mb-3 border rounded bg-light">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <h5 class="fw-bold">Sophia Wilson</h5>
+                                <button class="btn btn-risk-scor">
+                                    <i class="bi bi-exclamation-triangle-fill text-danger"></i> Risk Score:8.5
+                                </button>
+                            </div>
+
+                            <p class="text-muted">[Room 101]</p>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card h-100" style="background: #EFF6FF; border: none;">
+                                        <div class="card-body">
+                                            <p class="fw-bold" style="color: #00A0DA;"><i class="bi bi-heart-pulse"></i>
+                                                Vital Signs</p>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <p class="fs-6 text-muted">Bp: 160/95</p>
+                                                <p class="fs-6 text-muted">HR: 98</p>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <p class="fs-6 text-muted">Temp: 38.5°C</p>
+                                                <p class="fs-6 text-muted">SpO2: 92%</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100" style="background: #EFF6FF; border: none;">
+                                        <div class="card-body">
+                                            <p class="fw-bold" style="color: #00A0DA;"><i
+                                                    class="bi bi-file-medical"></i> Lab Results</p>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <p class="fs-6 text-muted">WBC: 12.5</p>
+                                                <p class="fs-6 text-muted">CRP: 85</p>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <p class="fs-6 text-muted">Trend: Increasing</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-secondary mt-2 d-flex align-items-center">
+                                <i class="bi bi-bell me-2"></i>
+                                Rising CRP and WBC indicate potential infection
+                            </div>
+                            <div class="alert alert-secondary d-flex align-items-center">
+                                <i class="bi bi-bell me-2"></i>
+                                BP trending upward over last 4 hours
+                            </div>
+                            <!-- <a href="#" class="text-primary text-end">View Detailed Trend</a> -->
+                            <a href="#" class="text-primary text-end" @click="openTrendModal">View Detailed Trend</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      <!-- Second Modal (Trend Analysis) -->
+      <div class="modal fade" id="trendModal" tabindex="-1" aria-labelledby="trendModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p class="modal-title fs-4 fw-bold" id="trendModalLabel">
+              <i class="bi bi-graph-up-arrow text-warning"></i> Trend Analysis
+            </p>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="patient-card p-3 border rounded bg-light">
+              <p class="fw-bold">Sophia Wilson</p>
+              <p class="text-muted fs-6">[Room 101]</p>
+
+              <!-- Chart Component -->
+              <div class="bg-white border rounded p-3">
+                <p class="fw-bold"><i class="bi bi-bar-chart-line"></i> Risk Score Trending Up</p>
+                <TrendChart />
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-4">
+                  <div class="card p-2 text-center">
+                    <p class="fw-bold">Current Risk</p>
+                    <p class="text-danger fw-bold">8.5 <span class="text-muted">+1.3</span></p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card p-2 text-center">
+                    <p class="fw-bold">Lab Trend</p>
+                    <p class="text-danger fw-bold">12.5 <span class="text-muted">+0.7</span></p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card p-2 text-center">
+                    <p class="fw-bold">Vital Signs</p>
+                    <p class="text-success fw-bold">92% <span class="text-muted">-1%</span></p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 </template>
 
 <script>
+import { Modal } from 'bootstrap';
+import TrendChart from "@/nurse/TrendChart.vue";
 
 
 export default {
     name: "NurseDashboard",
+    components: {
+    TrendChart
+  },
 
     data() {
         return {
             searchQuery: "",
+            warningModal: null, // Store modal instance
 
             appointments: [
                 { id: 1, name: "John Doe", type: "Follow Up", time: "9:30 AM" },
@@ -306,20 +447,22 @@ export default {
             patients: [
                 {
                     id: "123456",
-                    name: "James Wilson",
+                   
+                    name: "Tommy Chen",
                     status: "Active",
-                    department: "ED-Cardiology",
-                    image: require("@/assets/images/patient6.jpg"),
+                    department: "Pediatric ED",
+                    image: require("@/assets/images/tommy.png"),
+                    
                     workingSummary: "55yo male with acute chest pain, likely ACS. HTN, T2DM history. VS: BP 150/90, HR 98, RR 22, O2 94%. Active cardiac workup in progress.",
                     age: 55,
                     gender: "male",
                     mrn: "12345",
                     appointments:
                     {
-                        time: "08:30 am - 10:30 am",
-                        type: "General Checkup",
-                        doctor: "Dr. Carol D. Pollack-rundle",
-                        status: "success",
+                        time: "12/06/2024  10:30 am",
+                        type: "Pulmonologist Visit",
+                        doctor: "Dr.Michael Park",
+                        status: "success"
                     },
 
                     medicalReport: {
@@ -348,7 +491,7 @@ export default {
                     name: "Sarah Mitchell",
                     status: "Active",
                     department: "ED - OB/GYN",
-                    image: require("@/assets/images/patient2.jpg"),
+                    image: require("@/assets/images/sarah.png"),
                     workingSummary: "28yo female with ruptured ectopic pregnancy. Unstable VS: BP 90/60, HR 120. Surgical intervention required. 1L hemoperitoneum identified.",
                     age: 28,
                     gender: "femal",
@@ -383,9 +526,9 @@ export default {
                 },
                 {
                     id: "123458",
-                    name: "Tommy Chen",
+                    name: "James Wilson",
                     status: "Active",
-                    department: "Pediatric ED",
+                    department: "ED-Cardiology",
                     image: require("@/assets/images/patient.jpg"),
                     workingSummary: "7yo male with severe asthma exacerbation. O2 88%, marked respiratory distress. Known asthmatic, trigger: cat exposure. Non-compliant with controller medications.",
                     age: 7,
@@ -424,7 +567,7 @@ export default {
                     name: "Emily Anderson",
                     status: "Active",
                     department: "ED - Surgery",
-                    image: require("@/assets/images/patient1.jpg"),
+                    image: require("@/assets/images/Ander.png"),
                     workingSummary: "22yo female with acute appendicitis. RLQ pain, fever 100.9°F. Positive surgical signs. Confirmed on imaging. Scheduled for laparoscopic appendectomy.",
                     age: 22,
                     gender: "female",
@@ -462,7 +605,7 @@ export default {
                     name: "Michael Chen",
                     status: "Active",
                     department: "ENT",
-                    image: require("@/assets/images/patient5.jpg"),
+                    image: require("@/assets/images/micheal.png"),
                     workingSummary: "29yo male with right ear otomycosis following swimming. Failed antibiotic treatment. Presenting with itching, hearing loss, and characteristic fungal plug on examination.",
                     age: 29,
                     gender: "male",
@@ -500,7 +643,7 @@ export default {
                     name: "Eleanor Smith",
                     status: "Active",
                     department: "Ophthalmology",
-                    image: require("@/assets/images/patient3.png"),
+                    image: require("@/assets/images/Elearnor.png"),
                     workingSummary: "70yo female with sudden right eye vision loss, temporal headache, scalp tenderness. Giant cell arteritis suspected. Urgent steroid intervention required.",
                     age: 70,
                     gender: "female",
@@ -538,7 +681,7 @@ export default {
                     name: "David Rodriguez",
                     status: "Active",
                     department: "ENT",
-                    image: require("@/assets/images/patient5.jpg"),
+                    image: require("@/assets/images/david.png"),
                     workingSummary: "10yo child with chronic right ear discharge, new onset fever and mastoid tenderness. CSOM with mastoiditis requiring urgent intervention.",
                     age: 10,
                     gender: "male",
@@ -576,7 +719,7 @@ export default {
                     name: "Margaret Wilson",
                     status: "Active",
                     department: "GYN",
-                    image: require("@/assets/images/patient3.png"),
+                    image: require("@/assets/images/magrate.png"),
                     workingSummary: "65yo female with postmenopausal bleeding, T2DM, HTN, BMI 36.6. High-risk for endometrial cancer requiring urgent workup.",
                     age: 65,
                     gender: "female",
@@ -623,6 +766,50 @@ export default {
         },
     },
     methods: {
+
+       
+        openTrendModal() {
+      // Get the first modal instance
+      const warningModalEl = document.getElementById('warningModal');
+      this.warningModal = Modal.getInstance(warningModalEl) || new Modal(warningModalEl);
+
+      if (this.warningModal) {
+        // Close the first modal and wait for it to fully hide
+        this.warningModal.hide();
+
+        warningModalEl.addEventListener('hidden.bs.modal', () => {
+          // Remove any lingering backdrops
+          this.removeBackdrop();
+
+          // Open the second modal
+          const trendModal = new Modal(document.getElementById('trendModal'));
+          trendModal.show();
+
+          // When the second modal closes, reset the first modal instance
+          document.getElementById('trendModal').addEventListener('hidden.bs.modal', () => {
+            this.removeBackdrop();
+            this.resetFirstModal();
+          }, { once: true });
+        }, { once: true });
+      }
+    },
+
+    resetFirstModal() {
+      // Reset first modal instance so it can be opened again
+      const warningModalEl = document.getElementById('warningModal');
+      this.warningModal = new Modal(warningModalEl); // Reinitialize instance
+    },
+
+    removeBackdrop() {
+      // Find and remove any lingering modal backdrops
+      const backdrops = document.getElementsByClassName('modal-backdrop');
+      while (backdrops.length > 0) {
+        backdrops[0].remove();
+      }
+
+      // Remove "modal-open" class from body to fix scrolling issues
+      document.body.classList.remove('modal-open');
+    },
 
         getBadgeClass(status) {
             return {
@@ -785,22 +972,25 @@ export default {
 
 .notification-yellow {
     color: #C3B41B;
-    border-radius: 5px;
-    background: #FEFCE8;
-    padding: 10px;
+
+    border: none;
 
 
 }
 
 .notification-red {
-
     color: #FF2626;
-    background: #FEF2F2;
-    border-radius: 5px;
-    padding: 10px;
+
+    border: none;
 }
 
 .custom-scrollbar {
     max-height: 320px;
+}
+
+.btn-risk-scor {
+    background: #FEE2E2;
+    color: #FF2626;
+    border-radius: 30px;
 }
 </style>

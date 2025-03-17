@@ -5,7 +5,7 @@
 
     <div class="mt-2 px-1 ">
         <p>
-            <strong>James Wilson</strong>, #12345, <strong>Dr. Sarah Thompson</strong>
+            <strong>{{ patientData.name }}</strong>, #{{ patientData.id }} <strong>Dr. Sarah Thompson</strong>
         </p>
     </div>
     <div class=" mt-4 px-1">
@@ -19,7 +19,7 @@
 
 <!-- Modal -->
 <div class="modal fade custom-modal" id="virtualSignsModal" tabindex="-1" aria-labelledby="virtualSignsModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg ">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-4 fw-bold" id="virtualSignsModalLabel">24-Hours Virtual Signs Chart</h1>

@@ -10,21 +10,21 @@
     <div class=" mt-4">
         <div class="d-flex align-item-center gap-2 no-print">
 
-            <button class="btn btn-report me-1"   @click="generateReport">
-                <i class="bi bi-file-earmark-text me-1"></i> Generate Report
+            <button class="btn btn-report "   @click="generateReport">
+                <i class="bi bi-file-earmark-text"></i> Generate Report
             </button>
 
-            <button class="btn btn-group me-1">
-                <i class="bi bi-link-45deg me-1"></i> Attach Template
+            <button class="btn btn-group ">
+                <i class="bi bi-link-45deg"></i> Attach Template
             </button>
-            <button class="btn btn-group me-1">
-                <i class="bi bi-envelope me-1"></i> Email Report
+            <button class="btn btn-group ">
+                <i class="bi bi-envelope "></i> Email Report
             </button>
-            <button class="btn btn-group me-1"  @click="confirmPrint">
-                <i class="bi bi-printer me-1"></i> Print
+            <button class="btn btn-group "  @click="confirmPrint">
+                <i class="bi bi-printer"></i> Print
             </button>
-            <button class="btn btn-group me-1" @click="confirmExtract">
-                <i class="bi bi-download me-1 "></i> Extract Report
+            <button class="btn btn-group " @click="confirmExtract">
+                <i class="bi bi-download "></i> Extract Report
             </button>
         </div>
 

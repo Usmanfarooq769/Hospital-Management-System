@@ -5,7 +5,7 @@
     <!-- Header -->
     <div class="d-flex justify-content-between align-items-center ">
         <p>
-            <strong>James Wilson</strong>, #12345, <strong>Dr. Sarah Thompson</strong>
+            <strong>{{ patientData.name }}</strong>, #{{ patientData.id }} <strong>Dr. Sarah Thompson</strong>
         </p>
     </div>
 
