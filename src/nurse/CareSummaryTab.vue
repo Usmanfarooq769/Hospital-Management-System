@@ -28,13 +28,13 @@
         <p>Loading patient data...</p>
     </div>
 
-    <div class="row mt-4">
+    <div class="row mt-4"  >
         <div class="card">
             <div class="card-body">
-                <p class=" fs-4 fw-bold">Last updated: Dec 14, 2024 8:00 am </p>
-                <p class="fs-6">55yo male with acute chest pain, <small class="fs-6" style="color: #4588E0;">likely ACS.
-                        HTN, T2DM</small> history. VS: BP 150/90, HR 98, RR 22, O2 94%. Active cardiac workup in
-                    progress.</p>
+                <div class="" v-for="(summary) in patientData.summary" :key="summary.id">
+                <p class=" fs-4 fw-bold">Last updated:<span>{{ summary.date }} </span> </p>
+                <p class="fs-6"> <span>{{ summary.description }}</span></p>
+            </div>
 
                 <div class="d-flex align-item-ceneter gap-4">
                     <div class="div">
@@ -52,7 +52,7 @@
 
     <div class="row mt-2 ">
 
-        <NursingTasksCard />
+        <NursingTasksCard  :patient-data="patientData"/>
 
 
     </div>
@@ -72,6 +72,7 @@ export default {
         patientData: {
             type: Object,
             default: () => ({}),
+            required: true
         },
     },
     computed: {
